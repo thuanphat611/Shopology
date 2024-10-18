@@ -16,4 +16,11 @@ export const envConfig = () => ({
     synchronize: false,
     autoLoadEntities: true,
   },
+
+  jwt: {
+    secret: process.env.JWT_SECRET || 'SECRET',
+    signOptions: {
+      expiresIn: Number(process.env.JWT_EXPIRATION_TIME) || '30m',
+    },
+  },
 });

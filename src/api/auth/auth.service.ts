@@ -1,17 +1,45 @@
 import { Injectable } from '@nestjs/common';
+import { compare } from 'bcrypt';
+import { plainToClass } from 'class-transformer';
+import { JwtService } from '@nestjs/jwt';
 
 import { UserService } from '../user/user.service';
 import { UserExistException } from '../user/user.exception';
 import { User } from '../user/entities';
 
-import { SignupDto } from './dto';
+import { LoggedInDto, SignupDto } from './dto';
+import { WrongCredentialException } from './auth.exception';
+import { ITokenPayload, IValidateUserParams } from './auth.interface';
 
 @Injectable()
 export class AuthService {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService,
+  ) {}
 
-  async login() {
-    return 'login route';
+  async login(user: User): Promise<LoggedInDto> {
+    const { email, id } = user;
+    const payload: ITokenPayload = { email, id };
+
+    const accessToken = await this.jwtService.signAsync(payload);
+    //TODO: implement refresh token
+    const refreshToken = accessToken;
+    const userInfo = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user.phone,
+      gender: user.gender,
+      dob: user.dob,
+    };
+
+    return {
+      accessToken,
+      refreshToken,
+      userInfo,
+    };
   }
 
   async signup(data: SignupDto): Promise<User> {
@@ -27,5 +55,30 @@ export class AuthService {
     }
 
     return this.userService.create(data);
+  }
+
+  async validateUser(data: IValidateUserParams) {
+    const { email, password } = data;
+
+    const user = await this.userService.findOneByEmail(email);
+    if (!user) {
+      throw new WrongCredentialException();
+    }
+
+    const isPasswordMatching = await compare(password, user.password);
+    if (!isPasswordMatching) {
+      throw new WrongCredentialException();
+    }
+
+    return plainToClass(User, user);
+  }
+
+  async validateAccessToken(email: string): Promise<User> {
+    const user = await this.userService.findOneByEmail(email);
+    if (!user) {
+      throw new WrongCredentialException();
+    }
+
+    return plainToClass(User, user);
   }
 }

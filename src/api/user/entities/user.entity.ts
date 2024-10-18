@@ -3,7 +3,7 @@ import { Exclude } from 'class-transformer';
 
 import { BaseEntity } from '@/common/entities';
 import { Gender } from '@/common/enums';
-import { Hash } from '@/utils';
+import { Hash } from '@/utils/helpers';
 
 @Entity('users')
 export class User extends BaseEntity {

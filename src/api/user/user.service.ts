@@ -15,6 +15,12 @@ export class UserService {
     private userRepository: UserRepository,
   ) {}
 
+  async findOneByEmail(email: string) {
+    const user = this.userRepository.findOneBy({ email });
+
+    return user;
+  }
+
   async findOneByEmailOrPhone({
     email,
     phone,
@@ -22,7 +28,9 @@ export class UserService {
     email: string;
     phone: string;
   }): Promise<User> {
-    const user = await this.userRepository.findOneBy({ email, phone });
+    const user = await this.userRepository.findOne({
+      where: [{ email }, { phone }],
+    });
 
     return user;
   }

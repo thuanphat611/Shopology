@@ -1,3 +1,4 @@
+import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
@@ -6,6 +7,7 @@ import { envConfig } from '@/config';
 import { DatabaseModule } from '@/database/database.module';
 import { AuthModule } from '@/api/auth/auth.module';
 import { UserModule } from '@/api/user/user.module';
+import { JwtAuthGuard } from '@/api/auth/guards';
 
 import { AppController } from './app.controller';
 
@@ -18,11 +20,15 @@ const EnvSchema = Joi.object({
   DATABASE_NAME: Joi.string().required(),
   DATABASE_USERNAME: Joi.string().required(),
   DATABASE_PASSWORD: Joi.string().required(),
+
+  JWT_SECRET: Joi.string().required(),
+  JWT_EXPIRATION_TIME: Joi.string().required(),
 });
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
       load: [envConfig],
       validationSchema: EnvSchema,
     }),
@@ -31,6 +37,11 @@ const EnvSchema = Joi.object({
     UserModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
