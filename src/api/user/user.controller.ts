@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Version } from '@nestjs/common';
 
 import { UserService } from './user.service';
 
@@ -9,5 +9,11 @@ export class UserController {
   @Get()
   getUser() {
     return 'User resource';
+  }
+
+  @Version('2')
+  @Get()
+  getUserV2() {
+    return 'User resource version 2';
   }
 }
