@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { plainToClass } from 'class-transformer';
 
 import { SignupDto } from '../auth/dto';
 
@@ -51,6 +50,6 @@ export class UserService {
 
     await this.userRepository.save(createdUser);
 
-    return plainToClass(User, createdUser);
+    return createdUser;
   }
 }

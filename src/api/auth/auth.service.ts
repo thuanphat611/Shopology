@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { compare } from 'bcrypt';
-import { plainToClass } from 'class-transformer';
 import { JwtService } from '@nestjs/jwt';
 
 import { UserService } from '../user/user.service';
@@ -25,20 +24,11 @@ export class AuthService {
     const accessToken = await this.jwtService.signAsync(payload);
     //TODO: implement refresh token
     const refreshToken = accessToken;
-    const userInfo = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      phone: user.phone,
-      gender: user.gender,
-      dob: user.dob,
-    };
 
     return {
       accessToken,
       refreshToken,
-      userInfo,
+      userInfo: user,
     };
   }
 
@@ -70,7 +60,7 @@ export class AuthService {
       throw new WrongCredentialException();
     }
 
-    return plainToClass(User, user);
+    return user;
   }
 
   async validateAccessToken(email: string): Promise<User> {
@@ -79,6 +69,6 @@ export class AuthService {
       throw new WrongCredentialException();
     }
 
-    return plainToClass(User, user);
+    return user;
   }
 }
