@@ -1,12 +1,23 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { HomePage } from "@/pages";
+import { DefaultLayout } from "@/layouts";
+import { HomePage, LoginPage } from "@/pages";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage />,
+      element: <DefaultLayout />,
+      children: [
+        {
+          path: "/home",
+          element: <HomePage />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
+        },
+      ],
     },
   ]);
 
