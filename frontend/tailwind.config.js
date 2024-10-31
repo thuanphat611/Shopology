@@ -13,8 +13,8 @@ export default {
 
         "button-green": "#47B486",
         "button-red": "#DB4444",
-        "button-hover-red": "#E2B93B",
-        "button-hover-blue": "#EB5757",
+        "button-hover-red": "#E07575",
+        "button-hover-blue": "#A0BCE0",
 
         "text-white": "#FAFAFA",
         "text-gray": "#7D8184",
