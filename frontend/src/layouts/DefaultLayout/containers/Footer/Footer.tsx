@@ -23,7 +23,7 @@ export default function Footer() {
           <p className="mb-4 leading-none text-[16px]">
             Get 10% off your first order
           </p>
-          <div className="has-[:focus]:border-second-red max-w-[217px] flex items-center py-3 px-4 rounded-[4px] border-white border-[1.5px] gap-x-2">
+          <div className="transition has-[:focus]:border-second-red max-w-[217px] flex items-center py-3 px-4 rounded-[4px] border-white border-[1.5px] gap-x-2">
             <input
               type="text"
               placeholder="Enter your email"
