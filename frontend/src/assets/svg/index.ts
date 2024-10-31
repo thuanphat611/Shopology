@@ -1,3 +1,11 @@
 export { default as Search } from "./Search.tsx";
 export { default as Heart } from "./Heart.tsx";
 export { default as Cart } from "./Cart.tsx";
+export { default as Send } from "./Send.tsx";
+export { default as Facebook } from "./Facebook.tsx";
+export { default as Twitter } from "./Twitter.tsx";
+export { default as Instagram } from "./Instagram.tsx";
+export { default as LinkedIn } from "./LinkedIn.tsx";
+export { default as QRCode } from "./QRCode.svg";
+export { default as GooglePlay } from "./GooglePlay.svg";
+export { default as AppStore } from "./AppStore.svg";
