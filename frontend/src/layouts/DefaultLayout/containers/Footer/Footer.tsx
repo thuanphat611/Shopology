@@ -27,7 +27,7 @@ export default function Footer() {
             <input
               type="text"
               placeholder="Enter your email"
-              className="w-0 bg-transparent grow flex outline-none"
+              className="flex w-0 bg-transparent outline-none grow"
             />
             <button>
               <Send />
@@ -79,7 +79,7 @@ export default function Footer() {
           <p className="opacity-70 font-medium text-[12px] leading-none mb-2">
             Save $3 with App New User Only
           </p>
-          <div className="flex gap-x-2 mb-6">
+          <div className="flex mb-6 gap-x-2">
             <img src={QRCode} className="w-20 h-20" />
             <div className="flex flex-col justify-between">
               <img src={GooglePlay} className="h-[30px]" />

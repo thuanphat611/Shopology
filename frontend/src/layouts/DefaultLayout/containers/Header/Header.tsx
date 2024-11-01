@@ -4,9 +4,10 @@ import { Input } from "antd";
 import { Search, Heart, Cart } from "@/assets/svg";
 
 export default function Header() {
+  // TODO make header responsive
   return (
     <div className="border-b-[0.5px] border-[#ccc]">
-      <div className="w-full max-w-screen-xl px-10 lg:px-0 lg:mx-auto pb-4 pt-10 flex items-center justify-between">
+      <div className="flex items-center justify-between w-full max-w-screen-xl px-10 pt-10 pb-4 lg:px-0 lg:mx-auto">
         <h5 className="font-semibold text-black text-[24px]">Shopology</h5>
         <ul className="space-x-12">
           <Link to="home" className="text-[16px] hover:text-button-red">
@@ -20,7 +21,7 @@ export default function Header() {
           </Link>
         </ul>
 
-        <div className="flex space-x-6 items-center">
+        <div className="flex items-center space-x-6">
           <Input
             placeholder="What are you looking for?"
             variant="filled"
