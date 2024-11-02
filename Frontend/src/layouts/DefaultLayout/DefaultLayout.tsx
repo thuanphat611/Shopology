@@ -6,7 +6,9 @@ export default function DefaultLayout() {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className="w-full max-w-screen-xl px-10 lg:px-0 lg:mx-auto">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
