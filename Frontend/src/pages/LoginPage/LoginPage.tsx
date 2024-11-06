@@ -47,7 +47,7 @@ export default function LoginPage() {
             <Button
               type="primary"
               style={{
-                backgroundColor: "#DB4444",
+                // backgroundColor: "#DB4444",
                 fontSize: "16px",
                 lineHeight: "1.5",
                 borderRadius: "4px",
