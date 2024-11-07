@@ -1,7 +1,7 @@
 export const defaultTheme = {
   token: {
-    fontSize: "16px",
-    lineHeight: "1.5",
+    fontSize: 16,
+    lineHeight: 1.5,
   },
   components: {
     Button: {
@@ -14,7 +14,7 @@ export const defaultTheme = {
     },
     Breadcrumb: {
       lastItemColor: "#000000",
-      separatorMargin: "12px",
+      separatorMargin: 12,
     },
   },
 };
