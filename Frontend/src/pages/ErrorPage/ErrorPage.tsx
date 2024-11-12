@@ -23,10 +23,10 @@ export default function ErrorPage() {
           />
         </div>
         <div className="flex flex-col items-center">
-          <h1 className="text-center text-[110px] font-semibold leading-[115px] mb-10">
+          <h1 className="text-center text-[50px] md:text-[110px] font-semibold  md:leading-[115px] mb-10">
             404 NOT FOUND
           </h1>
-          <p className="text-[16px] mb-24">
+          <p className="text-[16px] mb-24 text-center">
             Your visited page not found. You may go home page.
           </p>
           <Button
