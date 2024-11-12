@@ -6,6 +6,5 @@ export { default as Facebook } from "./Facebook.tsx";
 export { default as Twitter } from "./Twitter.tsx";
 export { default as Instagram } from "./Instagram.tsx";
 export { default as LinkedIn } from "./LinkedIn.tsx";
-export { default as QRCode } from "./QRCode.svg";
-export { default as GooglePlay } from "./GooglePlay.svg";
-export { default as AppStore } from "./AppStore.svg";
+export { default as GooglePlay } from "./GooglePlay.tsx";
+export { default as AppStore } from "./AppStore.tsx";

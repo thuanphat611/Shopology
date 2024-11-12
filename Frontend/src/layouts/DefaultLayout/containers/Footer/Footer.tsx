@@ -1,8 +1,8 @@
+import { QRCodeSVG } from "qrcode.react";
 import { Link } from "react-router-dom";
 
 import {
   Send,
-  QRCode,
   GooglePlay,
   AppStore,
   Facebook,
@@ -80,10 +80,10 @@ export default function Footer() {
             Save $3 with App New User Only
           </p>
           <div className="flex mb-6 gap-x-2">
-            <img src={QRCode} className="w-20 h-20" />
+            <QRCodeSVG value="https://github.com/thuanphat611" marginSize={1} size={80}/>
             <div className="flex flex-col justify-between">
-              <img src={GooglePlay} className="h-[30px]" />
-              <img src={AppStore} className="h-[34px]" />
+              <GooglePlay height="30" />
+              <AppStore height="34" />
             </div>
           </div>
           <div className="flex items-center gap-x-6">
