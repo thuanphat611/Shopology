@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
-import { Input } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Input, Avatar, Button } from "antd";
 
 import { Search, Heart, Cart } from "@/assets/svg";
+import { useAuth } from "@/hooks";
 
 export default function Header() {
+  const { getUser, isAuthenticated } = useAuth();
+  const user = getUser();
+
   // TODO make header responsive
   return (
     <div className="border-b-[0.5px] border-[#ccc]">
@@ -38,6 +43,20 @@ export default function Header() {
           <Link to="cart" className="hover:text-button-red">
             <Cart />
           </Link>
+          {isAuthenticated() ? (
+            <Avatar
+              src={user?.avatar}
+              icon={<UserOutlined />}
+              style={{
+                minHeight: "32px",
+                minWidth: "32px",
+              }}
+            />
+          ) : (
+            <Button size="large" type="primary" href="/login">
+              Login
+            </Button>
+          )}
         </div>
       </div>
     </div>
