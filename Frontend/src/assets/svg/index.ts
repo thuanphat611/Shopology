@@ -8,3 +8,8 @@ export { default as Instagram } from "./Instagram.tsx";
 export { default as LinkedIn } from "./LinkedIn.tsx";
 export { default as GooglePlay } from "./GooglePlay.tsx";
 export { default as AppStore } from "./AppStore.tsx";
+export { default as MallBox } from "./MallBox.tsx";
+export { default as User } from "./User.tsx";
+export { default as Cancel } from "./Cancel.tsx";
+export { default as Review } from "./Review.tsx";
+export { default as Logout } from "./Logout.tsx";

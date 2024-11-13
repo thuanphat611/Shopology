@@ -4,9 +4,9 @@ import { Header, Footer } from "./containers";
 
 export default function DefaultLayout() {
   return (
-    <div>
+    <div className="relative">
       <Header />
-      <div className="w-full max-w-screen-xl px-10 lg:px-0 lg:mx-auto">
+      <div className="w-full max-w-screen-xl px-10 lg:px-0 lg:mx-auto mt-[96px]">
         <Outlet />
       </div>
       <Footer />
