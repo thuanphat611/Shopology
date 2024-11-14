@@ -13,3 +13,5 @@ export { default as User } from "./User.tsx";
 export { default as Cancel } from "./Cancel.tsx";
 export { default as Review } from "./Review.tsx";
 export { default as Logout } from "./Logout.tsx";
+export { default as Phone } from "./Phone.tsx";
+export { default as Mail } from "./Mail.tsx";

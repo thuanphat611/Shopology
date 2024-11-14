@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { DefaultLayout } from "@/layouts";
-import { HomePage, LoginPage, ErrorPage } from "@/pages";
+import { HomePage, LoginPage, ErrorPage, ContactPage } from "@/pages";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -17,6 +17,10 @@ export default function AppRouter() {
         {
           path: "/login",
           element: <LoginPage />,
+        },
+        {
+          path: "/contact",
+          element: <ContactPage />,
         },
       ],
     },
