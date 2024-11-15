@@ -1,7 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { DefaultLayout } from "@/layouts";
-import { HomePage, LoginPage, ErrorPage, ContactPage } from "@/pages";
+import {
+  HomePage,
+  LoginPage,
+  ErrorPage,
+  ContactPage,
+  AboutPage,
+} from "@/pages";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -21,6 +27,10 @@ export default function AppRouter() {
         {
           path: "/contact",
           element: <ContactPage />,
+        },
+        {
+          path: "/about",
+          element: <AboutPage />,
         },
       ],
     },

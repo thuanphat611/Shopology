@@ -15,3 +15,7 @@ export { default as Review } from "./Review.tsx";
 export { default as Logout } from "./Logout.tsx";
 export { default as Phone } from "./Phone.tsx";
 export { default as Mail } from "./Mail.tsx";
+export { default as Coin } from "./Coin.tsx";
+export { default as MoneyBag } from "./MoneyBag.tsx";
+export { default as Shop } from "./Shop.tsx";
+export { default as ShoppingBag } from "./ShoppingBag.tsx";
