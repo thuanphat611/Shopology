@@ -3,6 +3,8 @@ import { Breadcrumb } from "antd";
 import { StorySideImage } from "@/assets/images";
 import { Coin, MoneyBag, Shop, ShoppingBag } from "@/assets/svg";
 
+import { TeamSlider } from "./components";
+
 export default function AboutPage() {
   return (
     <>
@@ -88,15 +90,11 @@ export default function AboutPage() {
               <MoneyBag />
             </div>
           </div>
-          <h3 className="text-[32px] font-semibold leading-[30px] mt-6">
-            25k
-          </h3>
+          <h3 className="text-[32px] font-semibold leading-[30px] mt-6">25k</h3>
           <p className="text-[16px] mt-3">Anual gross sale in our site</p>
         </div>
       </div>
-      <div className="mb-[140px] flex gap-[30px] flex-wrap justify-center">
-        
-      </div>
+      <TeamSlider />
     </>
   );
 }
