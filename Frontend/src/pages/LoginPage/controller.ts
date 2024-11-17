@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import axios from "axios";
 import { Form } from "antd";
+import { useNavigate } from "react-router-dom";
 
 import { AuthService } from "@/api";
 import { showError } from "@/service";
@@ -8,8 +10,13 @@ import { useAuth } from "@/hooks";
 import { ILoginFormValues } from "./interfaces";
 
 export default function useHandler() {
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated()) navigate("/home");
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (values: ILoginFormValues) => {
     try {
