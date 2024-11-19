@@ -19,3 +19,6 @@ export { default as Coin } from "./Coin.tsx";
 export { default as MoneyBag } from "./MoneyBag.tsx";
 export { default as Shop } from "./Shop.tsx";
 export { default as ShoppingBag } from "./ShoppingBag.tsx";
+export { default as Delivery } from "./Delivery.tsx";
+export { default as Headphone } from "./Headphone.tsx";
+export { default as Secure } from "./Secure.tsx";

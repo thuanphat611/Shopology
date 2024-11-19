@@ -2,6 +2,7 @@ import { Breadcrumb } from "antd";
 
 import { StorySideImage } from "@/assets/images";
 import { Coin, MoneyBag, Shop, ShoppingBag } from "@/assets/svg";
+import { AppFeatures } from "@/components";
 
 import { TeamSlider } from "./components";
 
@@ -95,6 +96,9 @@ export default function AboutPage() {
         </div>
       </div>
       <TeamSlider />
+      <div className="mb-[140px]">
+        <AppFeatures />
+      </div>
     </>
   );
 }
