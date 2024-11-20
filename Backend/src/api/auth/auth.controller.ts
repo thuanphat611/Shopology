@@ -11,7 +11,7 @@ import { User } from '../user/entities';
 
 import { AuthService } from './auth.service';
 import { LoggedInDto, SignupDto } from './dto';
-import { LocalAuthGuard } from './guards';
+import { LocalAuthGuard, JwtRefreshGuard } from './guards';
 import { ReqUser, Public } from '@/decorators';
 
 @Controller('auth')
@@ -30,5 +30,12 @@ export class AuthController {
   @Post('signup')
   async signup(@Body() data: SignupDto): Promise<User> {
     return this.authService.signup(data);
+  }
+
+  @Public()
+  @UseGuards(JwtRefreshGuard)
+  @Post('refresh')
+  async refresh(@ReqUser() user: User) {
+    return this.authService.refresh(user);
   }
 }

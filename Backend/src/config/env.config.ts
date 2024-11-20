@@ -18,9 +18,17 @@ export const envConfig = () => ({
   },
 
   jwt: {
-    secret: process.env.JWT_SECRET || 'SECRET',
-    signOptions: {
-      expiresIn: Number(process.env.JWT_EXPIRATION_TIME) || '30m',
+    access: {
+      secret: process.env.JWT_SECRET || 'SECRET',
+      signOptions: {
+        expiresIn: Number(process.env.JWT_EXPIRATION_TIME) || '30m',
+      },
+    },
+    refresh: {
+      secret: process.env.JWT_REFRESH_SECRET || 'REFRESH_SECRET',
+      signOptions: {
+        expiresIn: Number(process.env.JWT_REFRESH_EXPIRATION_TIME) || '30d',
+      },
     },
   },
 });
