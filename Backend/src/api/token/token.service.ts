@@ -31,6 +31,10 @@ export class TokenService {
     }
   }
 
+  async deleteToken(email: string) {
+    await this.tokenRepository.delete({ email });
+  }
+
   async validateRefreshToken({
     token,
     email,

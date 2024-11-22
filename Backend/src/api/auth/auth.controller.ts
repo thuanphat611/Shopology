@@ -38,4 +38,10 @@ export class AuthController {
   async refresh(@ReqUser() user: User) {
     return this.authService.refresh(user);
   }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('logout')
+  async logout(@ReqUser() user: User) {
+    if (user) return this.authService.logout(user.email);
+  }
 }

@@ -74,6 +74,14 @@ export class AuthService {
     };
   }
 
+  async logout(email: string) {
+    await this.tokenService.deleteToken(email);
+
+    return {
+      email,
+    };
+  }
+
   async validateUser(data: IValidateUserParams) {
     const { email, password } = data;
 
