@@ -3,6 +3,7 @@ import type { MenuProps } from "antd";
 
 import { MallBox, User, Cancel, Review, Logout } from "@/assets/svg";
 import { useAuth } from "@/hooks";
+import { AuthService } from "@/api";
 
 const menuStyle: React.CSSProperties = {
   background: "rgba(0,0,0,0.35)",
@@ -64,18 +65,17 @@ export default function useHandler() {
     {
       key: "5",
       label: (
-        <p
-          className="flex gap-x-2 items-center h-[30px] text-white text-[14px]"
-        >
+        <p className="flex gap-x-2 items-center h-[30px] text-white text-[14px]">
           <Logout />
           Logout
         </p>
       ),
-      onClick: handleLogout
+      onClick: handleLogout,
     },
   ];
 
-  function handleLogout() {
+  async function handleLogout() {
+    await AuthService.logout();
     logout();
     window.location.reload();
   }

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import { axiosClient } from "@/service";
 import { ILoginResponse } from "@/pages/LoginPage";
 
 const login = async ({
@@ -18,6 +19,11 @@ const login = async ({
   return response.data;
 };
 
+const logout = async () => {
+  await axiosClient.post(`${import.meta.env.VITE_BACKEND}/api/v1/auth/logout`);
+};
+
 export const AuthService = {
   login,
+  logout,
 };
