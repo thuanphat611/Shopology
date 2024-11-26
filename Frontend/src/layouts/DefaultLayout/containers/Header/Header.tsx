@@ -69,8 +69,8 @@ export default function Header() {
               />
             </Dropdown>
           ) : (
-            <Button size="large" type="primary" href="/login">
-              Login
+            <Button size="large" type="primary" href="/signup">
+              Signup
             </Button>
           )}
         </div>

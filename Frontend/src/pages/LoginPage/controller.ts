@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { Form } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { AuthService } from "@/api";
-import { showError } from "@/service";
 import { useAuth } from "@/hooks";
+import { apiErrorHandler } from "@/utils/functions";
 
 import { ILoginFormValues } from "./interfaces";
 
@@ -24,11 +23,7 @@ export default function useHandler() {
       login(response);
       window.location.href = "/home";
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        showError(error.response.data.message);
-      } else {
-        showError("An unexpected error occurred. Please try again.");
-      }
+      apiErrorHandler(error);
     }
   };
 

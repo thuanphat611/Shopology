@@ -7,6 +7,7 @@ import {
   ErrorPage,
   ContactPage,
   AboutPage,
+  SignupPage,
 } from "@/pages";
 
 export default function AppRouter() {
@@ -23,6 +24,10 @@ export default function AppRouter() {
         {
           path: "/login",
           element: <LoginPage />,
+        },
+        {
+          path: "/signup",
+          element: <SignupPage />,
         },
         {
           path: "/contact",
