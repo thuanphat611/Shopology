@@ -12,3 +12,19 @@
     font-family: "Poppins", sans-serif;
   }
 }
+
+.banner-content {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.banner-content.fade-out {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.banner-content.fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}

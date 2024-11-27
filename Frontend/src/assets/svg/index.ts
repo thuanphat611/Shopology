@@ -22,3 +22,8 @@ export { default as ShoppingBag } from "./ShoppingBag.tsx";
 export { default as Delivery } from "./Delivery.tsx";
 export { default as Headphone } from "./Headphone.tsx";
 export { default as Secure } from "./Secure.tsx";
+export { default as ArrowRight } from "./ArrowRight.tsx";
+export { default as AppleLogo } from "./AppleLogo.tsx";
+export { default as NikeLogo } from "./NikeLogo.tsx";
+export { default as AcerLogo } from "./AcerLogo.tsx";
+export { default as NintendoLogo } from "./NintendoLogo.tsx";
