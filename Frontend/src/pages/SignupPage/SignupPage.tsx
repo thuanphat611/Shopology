@@ -13,7 +13,7 @@ export default function SignupPage() {
       <div className="flex">
         <img src={LoginSideImage} className="hidden w-0 grow lg:block" />
         <div className="flex flex-col items-center justify-center w-0 py-[100px] sm:py-8 grow">
-          <h2 className="text-[36px] mb-6">Create an account</h2>
+          <h2 className="text-[2.25rem] mb-6">Create an account</h2>
           <p className="text[16px] mb-12">Enter your detail below</p>
           <Form
             name="login-form"
@@ -139,11 +139,11 @@ export default function SignupPage() {
                 Sign up
               </Button>
             </Form.Item>
-            <h3 className="block text-[16px]">
+            <h3 className="block text-[1rem]">
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-[16px] text-black font-semibold hover:text-button-hover-red inline underline underline-offset-4"
+                className="text-[1rem] text-black font-semibold hover:text-button-hover-red inline underline underline-offset-4"
               >
                 Log in
               </Link>

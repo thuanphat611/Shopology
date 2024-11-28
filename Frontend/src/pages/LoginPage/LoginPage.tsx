@@ -13,7 +13,7 @@ export default function LoginPage() {
       <div className="flex">
         <img src={LoginSideImage} className="hidden w-0 grow lg:block" />
         <div className="flex flex-col items-center justify-center w-0 py-[100px] sm:py-8 grow">
-          <h2 className="text-[36px] mb-6">Login to Shopology</h2>
+          <h2 className="text-[2.25rem] mb-6">Login to Shopology</h2>
           <p className="text[16px] mb-12">Enter your detail below</p>
           <Form name="login-form" form={form} onFinish={onLogin}>
             <Form.Item name="email" rules={[{ required: true }]}>
@@ -63,7 +63,7 @@ export default function LoginPage() {
               </Form.Item>
               <Link
                 to=""
-                className="block p-4 text-second-red text-[16px] hover:text-button-hover-red"
+                className="block p-4 text-second-red text-[1rem] hover:text-button-hover-red"
               >
                 Forget password
               </Link>

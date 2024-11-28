@@ -17,15 +17,15 @@ export default function Header() {
   return (
     <div className="fixed top-0 left-0 right-0 border-b-[0.5px] border-[#ccc] bg-white z-50">
       <div className="flex items-center justify-between w-full max-w-screen-xl px-10 pt-10 pb-4 lg:px-0 lg:mx-auto">
-        <h5 className="font-semibold text-black text-[24px]">Shopology</h5>
+        <h5 className="font-semibold text-black text-[1.5rem]">Shopology</h5>
         <ul className="space-x-12">
-          <Link to="home" className="text-[16px] hover:text-button-red">
+          <Link to="home" className="text-[1rem] hover:text-button-red">
             Home
           </Link>
-          <Link to="contact" className="text-[16px] hover:text-button-red">
+          <Link to="contact" className="text-[1rem] hover:text-button-red">
             Contact
           </Link>
-          <Link to="about" className="text-[16px] hover:text-button-red">
+          <Link to="about" className="text-[1rem] hover:text-button-red">
             About
           </Link>
         </ul>

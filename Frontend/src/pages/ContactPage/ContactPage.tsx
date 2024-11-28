@@ -24,12 +24,12 @@ export default function ContactPage() {
               <div className="w-10 h-10 rounded-full bg-second-red flex items-center justify-center">
                 <Phone />
               </div>
-              <h4 className="text-[16px] font-medium">Call To Us</h4>
+              <h4 className="text-[1rem] font-medium">Call To Us</h4>
             </div>
-            <p className="text-[16px] font-normal mt-6">
+            <p className="text-[1rem] font-normal mt-6">
               We are available 24/7, 7 days a week.
             </p>
-            <p className="text-[16px] font-normal mt-4">
+            <p className="text-[1rem] font-normal mt-4">
               Phone: +8801611112222
             </p>
           </div>
@@ -39,15 +39,15 @@ export default function ContactPage() {
               <div className="w-10 h-10 rounded-full bg-second-red flex items-center justify-center">
                 <Mail />
               </div>
-              <h4 className="text-[16px] font-medium">Write To Us</h4>
+              <h4 className="text-[1rem] font-medium">Write To Us</h4>
             </div>
-            <p className="text-[16px] font-normal mt-6">
+            <p className="text-[1rem] font-normal mt-6">
               Fill out our form and we will contact you within 24 hours.
             </p>
-            <p className="text-[16px] font-normal mt-4">
+            <p className="text-[1rem] font-normal mt-4">
               Email: customer@shopology.com
             </p>
-            <p className="text-[16px] font-normal mt-4">
+            <p className="text-[1rem] font-normal mt-4">
               Email: support@shopology.com
             </p>
           </div>

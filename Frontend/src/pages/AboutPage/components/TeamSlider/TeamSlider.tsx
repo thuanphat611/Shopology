@@ -11,14 +11,17 @@ export default function TeamSlider() {
         {peopleList.map((item, index) => {
           if (index < (page + 1) * numPerPage && index >= page * numPerPage)
             return (
-              <div key={`${index}-${item.name}-${item.role}`} className="basis-1/3">
+              <div
+                key={`${index}-${item.name}-${item.role}`}
+                className="basis-1/3"
+              >
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-full rounded-[4px] mb-8"
                 />
-                <h4 className="text-[32px] leading-[30px]">{item.name}</h4>
-                <h5 className="text-[16px] mb-4">{item.role}</h5>
+                <h4 className="text-[2rem] leading-[1.875rem]">{item.name}</h4>
+                <h5 className="text-[1rem] mb-4">{item.role}</h5>
                 <div className="flex gap-x-4">
                   <a href="" className="text-black hover:text-second-red">
                     <Twitter />

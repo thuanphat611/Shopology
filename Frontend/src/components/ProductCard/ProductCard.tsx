@@ -21,7 +21,9 @@ export default function ProductCard() {
         />
         {discountPercentage > 0 ? (
           <div className="absolute top-3 left-3 bg-second-red px-3 py-1 rounded-[4px]">
-            <h5 className="text-white text-[12px]">-{discountPercentage}%</h5>
+            <h5 className="text-white text-[0.75rem]">
+              -{discountPercentage}%
+            </h5>
           </div>
         ) : null}
         <div className="absolute top-3 right-3">
@@ -32,24 +34,24 @@ export default function ProductCard() {
             <Eye />
           </button>
         </div>
-        <button className="hidden group-hover:block absolute bottom-0 left-0 right-0 bg-black outline-none hover:bg-primary-black text-white text-[16px] p-2">
+        <button className="hidden group-hover:block absolute bottom-0 left-0 right-0 bg-black outline-none hover:bg-primary-black text-white text-[1rem] p-2">
           Add To Cart
         </button>
       </div>
-      <h3 className="mt-4 text-[16px] text-wrap line-clamp-2">{name}</h3>
+      <h3 className="mt-4 text-[1rem] text-wrap line-clamp-2">{name}</h3>
       <div className="mt-2 flex">
-        <h4 className="text-[16px] text-second-red">
+        <h4 className="text-[1rem] text-second-red">
           ${Math.round((price * (100 - discountPercentage)) / 100)}
         </h4>
         {(discountPercentage * price) / 100 ? (
-          <h4 className="ml-3 text-[16px] text-black opacity-50 line-through decoration-1">
+          <h4 className="ml-3 text-[1rem] text-black opacity-50 line-through decoration-1">
             ${price}
           </h4>
         ) : null}
       </div>
       <div className="mt-2 flex">
         <Rate disabled allowHalf defaultValue={rating} />
-        <h4 className="ml-2 text-[14px] font-medium text-black opacity-50">
+        <h4 className="ml-2 text-[0.875rem] font-medium text-black opacity-50">
           ({ratingCount})
         </h4>
       </div>

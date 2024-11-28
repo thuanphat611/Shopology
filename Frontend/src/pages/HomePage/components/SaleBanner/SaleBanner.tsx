@@ -15,7 +15,7 @@ export default function SaleBanner() {
           className={`banner-content ${transitioning ? "fade-out" : "fade-in"}`}
         >
           <div className="w-2/5 absolute left-7 bottom-5 md:left-16 md:bottom-11 z-10">
-            <div className="flex items-center text-[16px] leading-normal">
+            <div className="flex items-center text-[1rem] leading-normal">
               <div className="hidden md:flex h-10 w-auto items-center justify-center">
                 {bannerList[currentBanner].brandLogo}
               </div>
@@ -23,14 +23,14 @@ export default function SaleBanner() {
                 {bannerList[currentBanner].name}
               </h4>
             </div>
-            <h2 className="text-white text-[20px] mt-1 md:mt-5 md:text-[48px] leading-normal md:leading-[60px]">
+            <h2 className="text-white text-[1.25rem] mt-1 md:mt-5 md:text-[3rem] leading-normal md:leading-[3.75rem]">
               {bannerList[currentBanner].text}
             </h2>
             <Link
               to=""
               className="flex mt-[10px] md:mt-[22px] text-white hover:text-button-hover-red"
             >
-              <h5 className="text-[14px] md:text-[16px] mr-2 leading-normal underline underline-offset-[6px]">
+              <h5 className="text-[0.875rem] md:text-[1rem] mr-2 leading-normal underline underline-offset-[6px]">
                 Shop now
               </h5>
               <ArrowRight />

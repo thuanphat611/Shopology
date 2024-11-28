@@ -19,7 +19,7 @@ export default function useHandler() {
       label: (
         <Link
           to="/account"
-          className="flex gap-x-2 items-center h-[30px] text-white text-[14px]"
+          className="flex gap-x-2 items-center h-[30px] text-white text-[0.875rem]"
         >
           <User />
           Manage My Account
@@ -31,7 +31,7 @@ export default function useHandler() {
       label: (
         <Link
           to="/orders"
-          className="flex gap-x-2 items-center h-[30px] text-white text-[14px]"
+          className="flex gap-x-2 items-center h-[30px] text-white text-[0.875rem]"
         >
           <MallBox />
           My Order
@@ -43,7 +43,7 @@ export default function useHandler() {
       label: (
         <Link
           to="/cancelations"
-          className="flex gap-x-2 items-center h-[30px] text-white text-[14px]"
+          className="flex gap-x-2 items-center h-[30px] text-white text-[0.875rem]"
         >
           <Cancel />
           My Cancelations
@@ -55,7 +55,7 @@ export default function useHandler() {
       label: (
         <Link
           to="/reviews"
-          className="flex gap-x-2 items-center h-[30px] text-white text-[14px]"
+          className="flex gap-x-2 items-center h-[30px] text-white text-[0.875rem]"
         >
           <Review />
           My Reviews
@@ -65,7 +65,7 @@ export default function useHandler() {
     {
       key: "5",
       label: (
-        <p className="flex gap-x-2 items-center h-[30px] text-white text-[14px]">
+        <p className="flex gap-x-2 items-center h-[30px] text-white text-[0.875rem]">
           <Logout />
           Logout
         </p>

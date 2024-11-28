@@ -9,10 +9,10 @@ export default function AppFeatures() {
             <Delivery />
           </div>
         </div>
-        <h3 className="text-[20px] font-semibold leading-[28px] mt-6 text-center">
+        <h3 className="text-[1.25rem] font-semibold leading-[1.75rem] mt-6 text-center">
           FREE AND FAST DELIVERY
         </h3>
-        <p className="text-[14px] mt-3 text-center">
+        <p className="text-[0.875rem] mt-3 text-center">
           Free delivery for all orders over $140
         </p>
       </div>
@@ -23,10 +23,10 @@ export default function AppFeatures() {
             <Headphone />
           </div>
         </div>
-        <h3 className="text-[20px] font-semibold leading-[28px] mt-6 text-center">
+        <h3 className="text-[1.25rem] font-semibold leading-[1.75rem] mt-6 text-center">
           24/7 CUSTOMER SERVICE
         </h3>
-        <p className="text-[14px] mt-3 text-center">
+        <p className="text-[0.875rem] mt-3 text-center">
           Friendly 24/7 customer support
         </p>
       </div>
@@ -37,10 +37,10 @@ export default function AppFeatures() {
             <Secure />
           </div>
         </div>
-        <h3 className="text-[20px] font-semibold leading-[28px] mt-6 text-center">
+        <h3 className="text-[1.25rem] font-semibold leading-[1.75rem] mt-6 text-center">
           MONEY BACK GUARANTEE
         </h3>
-        <p className="text-[14px] mt-3 text-center">
+        <p className="text-[0.875rem] mt-3 text-center">
           We reurn money within 30 days
         </p>
       </div>
