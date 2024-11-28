@@ -27,3 +27,4 @@ export { default as AppleLogo } from "./AppleLogo.tsx";
 export { default as NikeLogo } from "./NikeLogo.tsx";
 export { default as AcerLogo } from "./AcerLogo.tsx";
 export { default as NintendoLogo } from "./NintendoLogo.tsx";
+export { default as Eye } from "./Eye.tsx";
