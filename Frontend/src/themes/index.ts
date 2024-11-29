@@ -2,6 +2,7 @@ export const defaultTheme = {
   token: {
     fontSize: 16,
     lineHeight: 1.5,
+    colorPrimary: "#DB4444",
   },
   components: {
     Button: {

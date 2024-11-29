@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
+import { AppFeatures } from "@/components";
+
 import { SaleBanner } from "./components";
+import { FlashSale } from "./containers";
 
 export default function HomePage() {
   const list = [
@@ -22,13 +25,17 @@ export default function HomePage() {
           {list.map((item, index) => (
             <li
               key={index}
-              className="text-[16px] leading-normal hover:text-button-hover-red"
+              className="text-[1rem] leading-normal hover:text-button-hover-red"
             >
               <Link to="">{item}</Link>
             </li>
           ))}
         </ul>
         <SaleBanner />
+      </div>
+      <FlashSale />
+      <div className="mb-[140px]">
+        <AppFeatures />
       </div>
     </>
   );

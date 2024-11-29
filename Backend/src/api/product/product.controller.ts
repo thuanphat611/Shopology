@@ -1,5 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 
+import { Public } from '@/decorators';
+
 import { ProductService } from './product.service';
 import { GetAllProductsDto } from './dto';
 
@@ -7,6 +9,7 @@ import { GetAllProductsDto } from './dto';
 export class ProductController {
   constructor(private productService: ProductService) {}
 
+  @Public()
   @Get()
   async getAll(@Query() query: GetAllProductsDto) {
     return this.productService.getAll(query);

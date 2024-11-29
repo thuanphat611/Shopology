@@ -14,7 +14,7 @@ export default function SaleBanner() {
         <span
           className={`banner-content ${transitioning ? "fade-out" : "fade-in"}`}
         >
-          <div className="w-2/5 absolute left-7 bottom-5 md:left-16 md:bottom-11 z-10">
+          <div className="w-3/5 md:w-2/5 absolute left-7 bottom-7 md:left-16 md:bottom-11 z-10">
             <div className="flex items-center text-[1rem] leading-normal">
               <div className="hidden md:flex h-10 w-auto items-center justify-center">
                 {bannerList[currentBanner].brandLogo}
