@@ -16,6 +16,10 @@ const fetcher: Fetcher<
     })
     .then((response) => response.data);
 
+const noPaginationFetcher: Fetcher<IProductpiResponse, string> = (
+  url: string
+) => axiosClient.get(url).then((response) => response.data);
+
 const useFlashSaleApi = ({ skip, limit }: { skip: number; limit: number }) => {
   const { data, error, isLoading } = useSWR(
     [`${import.meta.env.VITE_BACKEND}/api/v1/product`, limit, skip],
@@ -25,6 +29,16 @@ const useFlashSaleApi = ({ skip, limit }: { skip: number; limit: number }) => {
   return { data, error, isLoading };
 };
 
+const useBestSellerApi = () => {
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_BACKEND}/api/v1/product/best-seller`,
+    noPaginationFetcher
+  );
+
+  return { data, error, isLoading };
+};
+
 export const ProductService = {
   useFlashSaleApi,
+  useBestSellerApi,
 };

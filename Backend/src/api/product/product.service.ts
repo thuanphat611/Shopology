@@ -72,4 +72,33 @@ export class ProductService {
         }),
       );
   }
+
+  async getBestSeller() {
+    const selectedFields = [
+      'title',
+      'description',
+      'images',
+      'brand',
+      'category',
+      'price',
+      'discountPercentage',
+      'rating',
+      'stock',
+    ];
+
+    return this.httpService
+      .get('https://dummyjson.com/products', {
+        params: {
+          select: selectedFields.join(','),
+          skip: 0,
+          limit: 4,
+        },
+      })
+      .pipe(
+        map((response) => response.data),
+        catchError((error) => {
+          throw new BadRequestException(error.response.data.message);
+        }),
+      );
+  }
 }

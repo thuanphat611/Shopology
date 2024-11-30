@@ -15,13 +15,21 @@ export class ProductController {
     return this.productService.getAll(query);
   }
 
-  @Get(':id')
-  async getById(@Param('id') id: number) {
-    return this.productService.getById(id);
-  }
-
+  @Public()
   @Get('category/:category')
   async getByCategory(@Param('category') category: string) {
     return this.productService.getByCategory(category);
+  }
+
+  @Public()
+  @Get('best-seller')
+  async getBestSeller() {
+    return this.productService.getBestSeller();
+  }
+
+  @Public()
+  @Get(':id')
+  async getById(@Param('id') id: number) {
+    return this.productService.getById(id);
   }
 }
