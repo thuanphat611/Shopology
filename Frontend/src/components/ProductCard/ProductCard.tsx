@@ -8,7 +8,7 @@ export default function ProductCard({ data }: { data: IProduct }) {
   return (
     <Link
       className="w-[150px] md:w-[270px] flex flex-col items-start"
-      to={`/product/${data.id}`}
+      to={`/products/${data.id}`}
     >
       <div className="w-full group relative rounded-[4px] overflow-hidden">
         <img

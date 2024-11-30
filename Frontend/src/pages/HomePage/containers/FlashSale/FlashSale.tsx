@@ -40,7 +40,7 @@ export default function FlashSale() {
           </button>
         </div>
       </div>
-      <div className="relative mt-4 md:mt-10 flex justify-between flex-wrap gap-y-2 md:gap-y-7">
+      <div className="relative min-h-[430px] md:min-h-[350px] mt-4 md:mt-10 flex justify-between flex-wrap gap-y-2 md:gap-y-7">
         {data?.products.map((item) => (
           <ProductCard key={item.images[0]} data={item} />
         ))}
@@ -58,7 +58,9 @@ export default function FlashSale() {
           View All Products
         </Button>
       </div>
-      <Divider />
+      <div className="mb-[80px]">
+        <Divider />
+      </div>
     </div>
   );
 }

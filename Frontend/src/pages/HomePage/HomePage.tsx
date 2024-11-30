@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppFeatures } from "@/components";
 
 import { SaleBanner } from "./components";
-import { FlashSale } from "./containers";
+import { BrowseByCategory, FlashSale } from "./containers";
 
 export default function HomePage() {
   const list = [
@@ -34,6 +34,7 @@ export default function HomePage() {
         <SaleBanner />
       </div>
       <FlashSale />
+      <BrowseByCategory />
       <div className="mb-[140px]">
         <AppFeatures />
       </div>
