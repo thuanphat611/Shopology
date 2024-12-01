@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { AppFeatures } from "@/components";
 
 import { SaleBanner } from "./components";
-import { BestSellingProducts, BrowseByCategory, FlashSale } from "./containers";
+import {
+  BestSellingProducts,
+  BrowseByCategory,
+  FlashSale,
+  SpecialDeal,
+} from "./containers";
 
 export default function HomePage() {
   const list = [
@@ -36,6 +41,7 @@ export default function HomePage() {
       <FlashSale />
       <BrowseByCategory />
       <BestSellingProducts />
+      <SpecialDeal />
       <div className="mb-[140px]">
         <AppFeatures />
       </div>

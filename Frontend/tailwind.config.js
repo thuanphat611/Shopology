@@ -11,7 +11,7 @@ export default {
         "second-wheat": "#FEFAF1",
         "second-red": "#DB4444",
 
-        "button-green": "#47B486",
+        "button-green": "#00FF66",
         "button-red": "#DB4444",
         "button-hover-red": "#E07575",
         "button-hover-blue": "#A0BCE0",

@@ -1,5 +1,5 @@
 import LoginSideImage from "./LoginSideImage.png";
-import StorySideImage from "./storySideImage.png";
+import StorySideImage from "./StorySideImage.png";
 import Chairman from "./Chairman.png";
 import ManagingDirector from "./ManagingDirector.png";
 import ProductDesigner from "./ProductDesigner.png";
@@ -9,6 +9,7 @@ import SaleBanner1 from "./SaleBanner1.png";
 import SaleBanner2 from "./SaleBanner2.png";
 import SaleBanner3 from "./SaleBanner3.png";
 import SaleBanner4 from "./SaleBanner4.png";
+import SpecialDeal from "./SpecialDeal.png";
 
 export {
   LoginSideImage,
@@ -22,4 +23,5 @@ export {
   SaleBanner2,
   SaleBanner3,
   SaleBanner4,
+  SpecialDeal,
 };
