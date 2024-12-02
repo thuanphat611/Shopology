@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 import { DefaultLayout } from "@/layouts";
 import {
@@ -17,6 +21,10 @@ export default function AppRouter() {
       element: <DefaultLayout />,
       errorElement: <ErrorPage />,
       children: [
+        {
+          index: true,
+          element: <Navigate to="/home" replace />,
+        },
         {
           path: "/home",
           element: <HomePage />,

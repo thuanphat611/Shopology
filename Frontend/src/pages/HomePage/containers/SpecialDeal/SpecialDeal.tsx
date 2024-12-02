@@ -14,7 +14,7 @@ export default function SpecialDeal() {
         <h5 className="text-button-green text-[1rem] leading-[1.25rem] font-medium mb-2 md:mb-8">
           Special Deal
         </h5>
-        <h2 className="text-[1rem] text-white md:text-[3rem] md:leading-[3.75rem] line-clamp-2 mb-2 md:mb-8">
+        <h2 className="text-[1rem] text-white md:text-[3rem] md:leading-[3.75rem] mb-2 md:mb-8">
           Enhance Your Music Experience
         </h2>
 
