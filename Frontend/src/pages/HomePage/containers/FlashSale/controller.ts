@@ -4,7 +4,6 @@ import { ProductService } from "@/api";
 
 export default function useHandler() {
   const [page, setPage] = useState<number>(0);
-  // TODO: adjust list limit base on screen size
   const limit = 4;
 
   const { data, error, isLoading } = ProductService.useFlashSaleApi({

@@ -16,10 +16,10 @@ export default function NewArrival() {
           New Arrival
         </h2>
       </div>
-      <div className="mt-4 md:mt-10 flex gap-y-[10px] gap-x-[30px] flex-col md:flex-row mb-[140px]">
-        <div className="relative grow md-[10px] bg-black flex justify-center items-end">
+      <div className="mt-4 md:mt-10 flex gap-y-[10px] gap-x-[30px] flex-col md:flex-row mb-[70px] md:mb-[140px]">
+        <div className="relative grow md-[10px] bg-[#0D0D0D] flex justify-center items-end">
           <img src={PlayStation} alt="new arrival" className="w-4/5 h-auto" />
-          <div className="w-1/2 absolute bottom-8 left-8">
+          <div className="w-1/2 absolute bottom-4 left-4 md:bottom-8 md:left-8">
             <h4 className="text-white text-[1rem] leading-[1rem] md:text-[1.5rem] md:leading-[1.5rem] font-medium mb-4">
               PlayStation 5
             </h4>
@@ -39,9 +39,9 @@ export default function NewArrival() {
           ></Link>
         </div>
         <div className="grow flex flex-col gap-y-[10px] md:gap-y-[30px]">
-          <div className="relative grow bg-black flex justify-end items-end">
+          <div className="relative grow bg-[#0D0D0D] flex justify-end items-end">
             <img src={Woman} alt="new arrival" className="h-4/5 w-auto" />
-            <div className="w-1/2 absolute bottom-8 left-8">
+            <div className="w-1/2 absolute bottom-4 left-4 md:bottom-8 md:left-8">
               <h4 className="text-white text-[1rem] leading-[1rem] md:text-[1.5rem] md:leading-[1.5rem] font-medium mb-4">
                 Women’s Collections
               </h4>
@@ -61,14 +61,14 @@ export default function NewArrival() {
             ></Link>
           </div>
           <div className="grow flex gap-x-[10px] md:gap-x-[30px]">
-            <div className="relative grow bg-black flex justify-center items-center">
-              <div className="absolute top-0 bottom-0 left-0 right-0 rounded-full bg-[#D9D9D9] opacity-30 blur-[50px] z-0"></div>
+            <div className="relative grow bg-[#0D0D0D] flex justify-center items-center">
+              <div className="absolute top-0 bottom-0 left-0 right-0 rounded-full bg-[#D9D9D9] opacity-20 blur-[50px] z-0"></div>
               <img
                 src={Speakers}
                 alt="new arrival"
                 className="h-4/5 w-auto z-[1]"
               />
-              <div className="w-[90%] absolute bottom-8 left-8 z-[2]">
+              <div className="w-[90%] absolute bottom-4 left-4 md:bottom-8 md:left-8 z-[2]">
                 <h4 className="text-white text-[1rem] leading-[1rem] md:text-[1.5rem] md:leading-[1.5rem] font-medium mb-4">
                   Speakers
                 </h4>
@@ -87,14 +87,14 @@ export default function NewArrival() {
                 className="block md:hidden absolute top-0 bottom-0 left-0 right-0 z-[3]"
               ></Link>
             </div>
-            <div className="relative grow bg-black flex justify-center items-center">
-              <div className="absolute top-0 bottom-0 left-0 right-0 rounded-full bg-[#D9D9D9] opacity-30 blur-[50px] z-0"></div>
+            <div className="relative grow bg-[#0D0D0D] flex justify-center items-center">
+              <div className="absolute top-0 bottom-0 left-0 right-0 rounded-full bg-[#D9D9D9] opacity-20 blur-[50px] z-0"></div>
               <img
                 src={Perfume}
                 alt="new arrival"
                 className="h-4/5 w-auto z-[1]"
               />
-              <div className="w-[90%] absolute bottom-8 left-8 z-[2]">
+              <div className="w-[90%] absolute bottom-4 left-4 md:bottom-8 md:left-8 z-[2]">
                 <h4 className="text-white text-[1rem] leading-[1rem] md:text-[1.5rem] md:leading-[1.5rem] font-medium mb-4">
                   Perfume
                 </h4>

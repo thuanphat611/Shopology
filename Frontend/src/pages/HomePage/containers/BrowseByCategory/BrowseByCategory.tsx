@@ -43,7 +43,7 @@ export default function BrowseByCategory() {
           </Link>
         ))}
       </div>
-      <div className="mt-[60px] mb-[80px]">
+      <div className="mt-[30px] md:mt-[60px] mb-[40px] md:mb-[80px]">
         <Divider />
       </div>
     </div>

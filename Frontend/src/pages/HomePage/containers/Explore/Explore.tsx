@@ -48,7 +48,7 @@ export default function Explore() {
         ) : null}
       </div>
 
-      <div className="flex mt-[60px] mb-[80px] justify-center">
+      <div className="flex mt-[30px] md:mt-[60px] mb-[40px] md:mb-[80px] justify-center">
         {/* //TODO: Create a view all products endpoint */}
         <Button type="primary" style={{ height: "56px", padding: "10px 48px" }}>
           View All Products

@@ -27,7 +27,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="flex lg:gap-[45px]  mb-20 md:mb-32 lg:mb-[140px]">
+      <div className="flex lg:gap-[45px] mb-10 md:mb-32 lg:mb-[140px]">
         <ul className="basis-1/5 flex-col pt-10 pr-4 gap-4 hidden lg:flex items-start border-r border-[#ccc]">
           {list.map((item, index) => (
             <li
@@ -46,7 +46,7 @@ export default function HomePage() {
       <SpecialDeal />
       <Explore />
       <NewArrival />
-      <div className="mb-[140px]">
+      <div className="mb-[70px] md:mb-[140px]">
         <AppFeatures />
       </div>
     </>

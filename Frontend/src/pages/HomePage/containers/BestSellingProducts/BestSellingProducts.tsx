@@ -40,7 +40,7 @@ export default function BestSellingProducts() {
         ) : null}
       </div>
 
-      <div className="flex md:hidden mt-[60px] mb-[140px] justify-center">
+      <div className="flex md:hidden mt-[30px] md:mt-[60px] mb-[70px] md:mb-[140px] justify-center">
         <Button type="primary" style={{ height: "56px", padding: "10px 48px" }}>
           View All
         </Button>
