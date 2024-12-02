@@ -6,6 +6,7 @@ import { SaleBanner } from "./components";
 import {
   BestSellingProducts,
   BrowseByCategory,
+  Explore,
   FlashSale,
   SpecialDeal,
 } from "./containers";
@@ -42,6 +43,7 @@ export default function HomePage() {
       <BrowseByCategory />
       <BestSellingProducts />
       <SpecialDeal />
+      <Explore />
       <div className="mb-[140px]">
         <AppFeatures />
       </div>

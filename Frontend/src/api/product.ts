@@ -38,7 +38,23 @@ const useBestSellerApi = () => {
   return { data, error, isLoading };
 };
 
+const useExploreProductApi = ({
+  skip,
+  limit,
+}: {
+  skip: number;
+  limit: number;
+}) => {
+  const { data, error, isLoading } = useSWR(
+    [`${import.meta.env.VITE_BACKEND}/api/v1/product`, limit, skip],
+    ([url, limit, skip]) => fetcher({ url, limit, skip })
+  );
+
+  return { data, error, isLoading };
+};
+
 export const ProductService = {
   useFlashSaleApi,
   useBestSellerApi,
+  useExploreProductApi,
 };
