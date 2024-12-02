@@ -8,6 +8,7 @@ import {
   BrowseByCategory,
   Explore,
   FlashSale,
+  NewArrival,
   SpecialDeal,
 } from "./containers";
 
@@ -44,6 +45,7 @@ export default function HomePage() {
       <BestSellingProducts />
       <SpecialDeal />
       <Explore />
+      <NewArrival />
       <div className="mb-[140px]">
         <AppFeatures />
       </div>

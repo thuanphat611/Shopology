@@ -10,6 +10,10 @@ import SaleBanner2 from "./SaleBanner2.png";
 import SaleBanner3 from "./SaleBanner3.png";
 import SaleBanner4 from "./SaleBanner4.png";
 import SpecialDeal from "./SpecialDeal.png";
+import PlayStation from "./PlayStation.png";
+import Woman from "./Woman.png";
+import Speakers from "./Speakers.png";
+import Perfume from "./Perfume.png";
 
 export {
   LoginSideImage,
@@ -24,4 +28,8 @@ export {
   SaleBanner3,
   SaleBanner4,
   SpecialDeal,
+  PlayStation,
+  Woman,
+  Speakers,
+  Perfume,
 };
