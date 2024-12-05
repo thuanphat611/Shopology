@@ -18,7 +18,7 @@ export class CartItem {
   customerId: string;
 
   @Column({ name: 'product_id' })
-  productId: number;
+  productId: string;
 
   @Column()
   quantity: number;
