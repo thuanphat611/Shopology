@@ -100,6 +100,7 @@ export class AuthService {
 
   async validateAccessToken(email: string): Promise<User> {
     const user = await this.userService.findOneByEmail(email);
+
     if (!user) {
       throw new WrongCredentialException();
     }
