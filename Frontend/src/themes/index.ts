@@ -11,6 +11,7 @@ export const defaultTheme = {
       colorPrimaryActive: "#DB4444",
     },
     Input: {
+      colorBorder: "#000000",
       activeBorderColor: "#DB4444",
     },
     Breadcrumb: {

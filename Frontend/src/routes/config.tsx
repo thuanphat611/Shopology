@@ -12,6 +12,7 @@ import {
   ContactPage,
   AboutPage,
   SignupPage,
+  CartPage,
 } from "@/pages";
 
 export default function AppRouter() {
@@ -44,6 +45,10 @@ export default function AppRouter() {
         {
           path: "/about",
           element: <AboutPage />,
+        },
+        {
+          path: "/cart",
+          element: <CartPage />,
         },
       ],
     },
