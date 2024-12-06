@@ -72,6 +72,14 @@ export default function Footer() {
           >
             Contact
           </Link>
+          <span className="inline lg:hidden">
+            <Link
+              to="about"
+              className="mb-4 leading-none text-[1rem] hover:text-second-red"
+            >
+              About Us
+            </Link>
+          </span>
         </div>
 
         <div className="min-w-[252px] flex flex-col text-text-white">

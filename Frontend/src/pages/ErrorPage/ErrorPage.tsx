@@ -9,7 +9,7 @@ export default function ErrorPage() {
   return (
     <div className="flex flex-col min-h-[100vh]">
       <Header />
-      <div className="w-full max-w-screen-xl px-10 mb-20 grow lg:px-0 lg:mx-auto mt-[96px]">
+      <div className="w-full max-w-screen-xl px-4 lg:mx-auto pt-[149px] lg:pt-[96px] mb-20">
         <div className="mt-[80px] mb-[140px]">
           <Breadcrumb
             items={[
