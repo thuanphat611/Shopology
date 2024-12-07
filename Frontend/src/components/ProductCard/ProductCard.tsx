@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { Eye, Heart } from "@/assets/svg";
 import { IProduct } from "@/common/interfaces";
 
+import useHandler from "./controller";
+
 export default function ProductCard({ data }: { data: IProduct }) {
+  const { onAddToCart } = useHandler();
+
   return (
     <Link
       className="w-[150px] md:w-[270px] flex flex-col items-start"
@@ -32,7 +36,10 @@ export default function ProductCard({ data }: { data: IProduct }) {
           </button>
         </div>
         <button
-          onClick={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.preventDefault();
+            onAddToCart(data.id.toString());
+          }}
           className="hidden lg:group-hover:block absolute bottom-0 left-0 right-0 bg-black outline-none hover:bg-primary-black text-white text-[1rem] p-2"
         >
           Add To Cart

@@ -1,8 +1,10 @@
 import { Breadcrumb, Button, Input } from "antd";
+import React from "react";
+
+import useHandler from "./controller";
 
 export default function CartPage() {
-  const src =
-    "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png";
+  const { data } = useHandler();
 
   return (
     <>
@@ -43,70 +45,87 @@ export default function CartPage() {
           <tr className="block w-full h-[40px]"></tr>
         </tbody>
         <tbody className="w-full gap-[40px]">
-          <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
-            <td className="flex items-center gap-[20px] font-normal text-[1rem] leading-normal text-start pl-10">
-              <img
-                src={src}
-                alt=""
-                className="w-[54px] h-[54px] object-cover"
-              />
-              <h5 className="text-[1rem] leading-normal line-clamp-1">
-                LCD Monitor aaa aaa aaa
-              </h5>
-            </td>
-            <td className="font-normal text-[1rem] leading-normal text-center">
-              ${650}
-            </td>
-            <td className="font-normal text-[1rem] leading-normal text-center">
-              <input
-                type="number"
-                value={0}
-                onChange={() => {}}
-                className="w-[50px] border outline-none text-center rounded-md"
-              />
-            </td>
-            <td className="font-normal text-[1rem] leading-normal text-center">
-              Germany
-            </td>
-            <td className="font-normal text-[1rem] leading-normal text-end pr-10">
-              Germany
-            </td>
-          </tr>
+          {data?.itemList.map((item, index) => (
+            <React.Fragment key={`${index}-${item.addedDate}`}>
+              <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
+                <td className="flex items-center gap-[20px] font-normal text-[1rem] leading-normal text-start pl-10">
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="w-[54px] h-[54px] object-cover"
+                  />
+                  <h5 className="text-[1rem] leading-normal line-clamp-1">
+                    {item.title}
+                  </h5>
+                </td>
+                <td className="font-normal text-[1rem] leading-normal text-center">
+                  ${item.price}
+                </td>
+                <td className="font-normal text-[1rem] leading-normal text-center">
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    onChange={() => {}}
+                    className="w-[50px] border outline-none text-center rounded-md"
+                  />
+                </td>
+                <td className="font-normal text-[1rem] leading-normal text-center">
+                  {item.discountPercentage}%
+                </td>
+                <td className="font-normal text-[1rem] leading-normal text-end pr-10">
+                  {Math.round(
+                    (item.price * (100 - item.discountPercentage)) / 100
+                  )}
+                </td>
+              </tr>
+              {index < data.itemList.length - 1 ? (
+                <tr className="block w-full h-[40px]"></tr>
+              ) : null}
+            </React.Fragment>
+          ))}
         </tbody>
       </table>
 
       <ul className="block md:hidden">
-        <li className="flex items-start p-[10px] rounded-[4px] shadow-md border">
-          <img
-            src={src}
-            alt=""
-            className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px]"
-          />
-          <div className="grow ml-[10px] flex flex-col">
-            <h3 className="font-normal text-[1rem] leading-normal line-clamp-2">
-              LCD Screen
-            </h3>
-            <div className="flex items-center mt-[10px]">
-              <h4 className="font-medium text-[0.875rem] leading-normal line-clamp-1 opacity-50">
-                Quantity:
-              </h4>
-              <input
-                type="number"
-                value={0}
-                onChange={() => {}}
-                className="ml-[8px] w-[50px] border outline-none text-center rounded-md"
-              />
+        {data?.itemList.map((item, index) => (
+          <li
+            key={`${index}-${item.title}`}
+            className="flex items-start p-[10px] rounded-[4px] shadow-md border mb-[16px]"
+          >
+            <img
+              src={item.thumbnail}
+              alt={item.title}
+              className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px]"
+            />
+            <div className="grow ml-[10px] flex flex-col">
+              <h3 className="font-normal text-[1rem] leading-normal line-clamp-2">
+                {item.title}
+              </h3>
+              <div className="flex items-center mt-[10px]">
+                <h4 className="font-medium text-[0.875rem] leading-normal line-clamp-1 opacity-50">
+                  Quantity:
+                </h4>
+                <input
+                  type="number"
+                  value={item.quantity}
+                  onChange={() => {}}
+                  className="ml-[8px] w-[50px] border outline-none text-center rounded-md"
+                />
+              </div>
+              <div className="flex mt-[10px] justify-end gap-[10px]">
+                <h4 className="text-[1rem] leading-normal line-through opacity-50">
+                  ${item.price}
+                </h4>
+                <h4 className="mr-[10px] text-[1rem] leading-normal text-second-red font-semibold">
+                  $
+                  {Math.round(
+                    (item.price * (100 - item.discountPercentage)) / 100
+                  )}
+                </h4>
+              </div>
             </div>
-            <div className="flex mt-[10px] justify-end gap-[10px]">
-              <h4 className="text-[1rem] leading-normal line-through opacity-50">
-                ${950}
-              </h4>
-              <h4 className="mr-[10px] text-[1rem] leading-normal text-second-red font-semibold">
-                ${750}
-              </h4>
-            </div>
-          </div>
-        </li>
+          </li>
+        ))}
       </ul>
 
       <div className="mt-[24px] flex flex-wrap gap-[10px] justify-end md:justify-between">
@@ -180,7 +199,17 @@ export default function CartPage() {
           </h3>
           <div className="flex mt-[24px] justify-between items-center pb-[16px] border-b border-[#999999]">
             <h5 className="text-[1rem] leading-normal">Subtotal:</h5>
-            <h5 className="text-[1rem] leading-normal">${1750}</h5>
+            <h5 className="text-[1rem] leading-normal">
+              $
+              {data?.itemList.reduce((accumulator, item) => {
+                return (
+                  accumulator +
+                  Math.round(
+                    (item.price * (100 - item.discountPercentage)) / 100
+                  )
+                );
+              }, 0)}
+            </h5>
           </div>
           <div className="flex mt-[16px] justify-between items-center pb-[16px] border-b border-[#999999]">
             <h5 className="text-[1rem] leading-normal">Shipping:</h5>
@@ -188,7 +217,17 @@ export default function CartPage() {
           </div>
           <div className="flex mt-[16px] justify-between items-center pb-[16px]">
             <h5 className="text-[1rem] leading-normal">Total:</h5>
-            <h5 className="text-[1rem] leading-normal">${1750}</h5>
+            <h5 className="text-[1rem] leading-normal">
+              $
+              {data?.itemList.reduce((accumulator, item) => {
+                return (
+                  accumulator +
+                  Math.round(
+                    (item.price * (100 - item.discountPercentage)) / 100
+                  )
+                );
+              }, 0)}
+            </h5>
           </div>
           <div className="flex justify-center mt-[16px]">
             <Button
@@ -204,6 +243,6 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-    </>
+    </> //TODO: add loading animation
   );
 }

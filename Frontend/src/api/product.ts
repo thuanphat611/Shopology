@@ -1,10 +1,10 @@
 import useSWR, { Fetcher } from "swr";
 
 import { axiosClient } from "@/service";
-import { IProductpiResponse } from "@/pages/HomePage";
+import { IProductApiResponse } from "@/pages/HomePage";
 
 const fetcher: Fetcher<
-  IProductpiResponse,
+  IProductApiResponse,
   { url: string; limit: number; skip: number }
 > = ({ url, limit, skip }: { url: string; limit: number; skip: number }) =>
   axiosClient
@@ -16,7 +16,7 @@ const fetcher: Fetcher<
     })
     .then((response) => response.data);
 
-const noPaginationFetcher: Fetcher<IProductpiResponse, string> = (
+const noPaginationFetcher: Fetcher<IProductApiResponse, string> = (
   url: string
 ) => axiosClient.get(url).then((response) => response.data);
 

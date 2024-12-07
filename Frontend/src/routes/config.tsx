@@ -14,8 +14,11 @@ import {
   SignupPage,
   CartPage,
 } from "@/pages";
+import { useAuth } from "@/hooks";
 
 export default function AppRouter() {
+  const { isAuthenticated } = useAuth();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,7 +51,11 @@ export default function AppRouter() {
         },
         {
           path: "/cart",
-          element: <CartPage />,
+          element: isAuthenticated() ? (
+            <CartPage />
+          ) : (
+            <Navigate to="/login" replace />
+          ),
         },
       ],
     },
