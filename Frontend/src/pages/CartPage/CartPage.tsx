@@ -2,6 +2,7 @@ import { Breadcrumb, Button, Input } from "antd";
 import React from "react";
 
 import useHandler from "./controller";
+import { Cancel } from "@/assets/svg";
 
 export default function CartPage() {
   const { data } = useHandler();
@@ -36,9 +37,10 @@ export default function CartPage() {
             <th className="font-normal text-[1rem] leading-normal text-center">
               Reduction
             </th>
-            <th className="font-normal text-[1rem] leading-normal text-end pr-10">
+            <th className="font-normal text-[1rem] leading-normal text-center">
               Subtotal
             </th>
+            <th className="w-[70px] font-normal text-[1rem] leading-normal text-center"></th>
           </tr>
         </thead>
         <tbody>
@@ -48,15 +50,17 @@ export default function CartPage() {
           {data?.itemList.map((item, index) => (
             <React.Fragment key={`${index}-${item.addedDate}`}>
               <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
-                <td className="flex items-center gap-[20px] font-normal text-[1rem] leading-normal text-start pl-10">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-[54px] h-[54px] object-cover"
-                  />
-                  <h5 className="text-[1rem] leading-normal line-clamp-1">
-                    {item.title}
-                  </h5>
+                <td className="font-normal text-[1rem] leading-normal text-start pl-10">
+                  <div className="flex h-full items-center gap-[20px] ">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="w-[54px] h-[54px] object-cover"
+                    />
+                    <h5 className="text-[1rem] leading-normal line-clamp-1">
+                      {item.title}
+                    </h5>
+                  </div>
                 </td>
                 <td className="font-normal text-[1rem] leading-normal text-center">
                   ${item.price}
@@ -72,10 +76,17 @@ export default function CartPage() {
                 <td className="font-normal text-[1rem] leading-normal text-center">
                   {item.discountPercentage}%
                 </td>
-                <td className="font-normal text-[1rem] leading-normal text-end pr-10">
+                <td className="font-normal text-[1rem] leading-normal text-center">
                   {Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
                   )}
+                </td>
+                <td className="w-[70px]">
+                  <div className="flex justify-start items-center">
+                    <button className="w-[30px] h-[30px] text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer">
+                      <Cancel />
+                    </button>
+                  </div>
                 </td>
               </tr>
               {index < data.itemList.length - 1 ? (
@@ -90,7 +101,7 @@ export default function CartPage() {
         {data?.itemList.map((item, index) => (
           <li
             key={`${index}-${item.title}`}
-            className="flex items-start p-[10px] rounded-[4px] shadow-md border mb-[16px]"
+            className="relative flex items-start p-[10px] rounded-[4px] shadow-md border mb-[24px]"
           >
             <img
               src={item.thumbnail}
@@ -124,6 +135,9 @@ export default function CartPage() {
                 </h4>
               </div>
             </div>
+            <button className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] bg-white text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer">
+              <Cancel />
+            </button>
           </li>
         ))}
       </ul>
