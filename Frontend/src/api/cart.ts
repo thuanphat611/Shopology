@@ -11,12 +11,12 @@ const fetcher: Fetcher<ICartApiResponse, string> = (url: string) =>
   axiosClient.get(url).then((response) => response.data);
 
 const useGetCartApi = () => {
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading, mutate } = useSWR(
     `${import.meta.env.VITE_BACKEND}/api/v1/cart/${user.id}`,
     fetcher
   );
 
-  return { data, error, isLoading };
+  return { data, error, isLoading, mutate };
 };
 
 const addItemToCart = async (productId: string, quantity: number) => {
@@ -34,7 +34,34 @@ const addItemToCart = async (productId: string, quantity: number) => {
   );
 };
 
+const removeItemFromCart = async (productId: string) => {
+  if (!user) {
+    window.location.href = "/login";
+    return;
+  }
+
+  await axiosClient.delete(
+    `${import.meta.env.VITE_BACKEND}/api/v1/cart/${user.id}/item/${productId}`
+  );
+};
+
+const changeItemQuantity = async (productId: string, quantity: number) => {
+  if (!user) {
+    window.location.href = "/login";
+    return;
+  }
+
+  await axiosClient.put(
+    `${import.meta.env.VITE_BACKEND}/api/v1/cart/${user.id}/item/${productId}`,
+    {
+      quantity,
+    }
+  );
+};
+
 export const CartService = {
   useGetCartApi,
   addItemToCart,
+  removeItemFromCart,
+  changeItemQuantity,
 };

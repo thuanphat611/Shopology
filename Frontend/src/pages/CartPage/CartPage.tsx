@@ -1,11 +1,12 @@
-import { Breadcrumb, Button, Input } from "antd";
+import { Breadcrumb, Button, Input, Spin } from "antd";
 import React from "react";
 
 import useHandler from "./controller";
 import { Cancel } from "@/assets/svg";
 
 export default function CartPage() {
-  const { data } = useHandler();
+  const { data, isLoading, onRemoveItemFromCart, onQuantityChane } =
+    useHandler();
 
   return (
     <>
@@ -47,99 +48,126 @@ export default function CartPage() {
           <tr className="block w-full h-[40px]"></tr>
         </tbody>
         <tbody className="w-full gap-[40px]">
-          {data?.itemList.map((item, index) => (
-            <React.Fragment key={`${index}-${item.addedDate}`}>
-              <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
-                <td className="font-normal text-[1rem] leading-normal text-start pl-10">
-                  <div className="flex h-full items-center gap-[20px] ">
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="w-[54px] h-[54px] object-cover"
+          {data && data?.itemList.length > 0 ? (
+            data?.itemList.map((item, index) => (
+              <React.Fragment key={`${index}-${item.addedDate}`}>
+                <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
+                  <td className="font-normal text-[1rem] leading-normal text-start pl-10">
+                    <div className="flex h-full items-center gap-[20px] ">
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="w-[54px] h-[54px] object-cover"
+                      />
+                      <h5 className="text-[1rem] leading-normal line-clamp-1">
+                        {item.title}
+                      </h5>
+                    </div>
+                  </td>
+                  <td className="font-normal text-[1rem] leading-normal text-center">
+                    ${item.price}
+                  </td>
+                  <td className="font-normal text-[1rem] leading-normal text-center">
+                    <input
+                      type="number"
+                      min={1}
+                      value={item.quantity}
+                      onChange={(e) =>
+                        onQuantityChane(item.id, Number(e.target.value))
+                      }
+                      className="w-[50px] border outline-none text-center rounded-md"
                     />
-                    <h5 className="text-[1rem] leading-normal line-clamp-1">
-                      {item.title}
-                    </h5>
-                  </div>
-                </td>
-                <td className="font-normal text-[1rem] leading-normal text-center">
-                  ${item.price}
-                </td>
-                <td className="font-normal text-[1rem] leading-normal text-center">
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={() => {}}
-                    className="w-[50px] border outline-none text-center rounded-md"
-                  />
-                </td>
-                <td className="font-normal text-[1rem] leading-normal text-center">
-                  {item.discountPercentage}%
-                </td>
-                <td className="font-normal text-[1rem] leading-normal text-center">
-                  {Math.round(
-                    (item.price * (100 - item.discountPercentage)) / 100
-                  )}
-                </td>
-                <td className="w-[70px]">
-                  <div className="flex justify-start items-center">
-                    <button className="w-[30px] h-[30px] text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer">
-                      <Cancel />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              {index < data.itemList.length - 1 ? (
-                <tr className="block w-full h-[40px]"></tr>
-              ) : null}
-            </React.Fragment>
-          ))}
+                  </td>
+                  <td className="font-normal text-[1rem] leading-normal text-center">
+                    {item.discountPercentage}%
+                  </td>
+                  <td className="font-normal text-[1rem] leading-normal text-center">
+                    {Math.round(
+                      (item.price * (100 - item.discountPercentage)) / 100
+                    )}
+                  </td>
+                  <td className="w-[70px]">
+                    <div className="flex justify-start items-center">
+                      <button
+                        onClick={() => onRemoveItemFromCart(item.id)}
+                        className="w-[30px] h-[30px] text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer"
+                      >
+                        <Cancel />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                {index < data.itemList.length - 1 ? (
+                  <tr className="block w-full h-[40px]"></tr>
+                ) : null}
+              </React.Fragment>
+            ))
+          ) : (
+            <tr>
+              <td
+                colSpan={5}
+                className="font-normal text-[1rem] leading-normal text-center"
+              >
+                No item in cart
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
       <ul className="block md:hidden">
-        {data?.itemList.map((item, index) => (
-          <li
-            key={`${index}-${item.title}`}
-            className="relative flex items-start p-[10px] rounded-[4px] shadow-md border mb-[24px]"
-          >
-            <img
-              src={item.thumbnail}
-              alt={item.title}
-              className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px]"
-            />
-            <div className="grow ml-[10px] flex flex-col">
-              <h3 className="font-normal text-[1rem] leading-normal line-clamp-2">
-                {item.title}
-              </h3>
-              <div className="flex items-center mt-[10px]">
-                <h4 className="font-medium text-[0.875rem] leading-normal line-clamp-1 opacity-50">
-                  Quantity:
-                </h4>
-                <input
-                  type="number"
-                  value={item.quantity}
-                  onChange={() => {}}
-                  className="ml-[8px] w-[50px] border outline-none text-center rounded-md"
-                />
+        {data && data?.itemList.length > 0 ? (
+          data?.itemList.map((item, index) => (
+            <li
+              key={`${index}-${item.title}`}
+              className="relative flex items-start p-[10px] rounded-[4px] shadow-md border mb-[24px]"
+            >
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px]"
+              />
+              <div className="grow ml-[10px] flex flex-col">
+                <h3 className="font-normal text-[1rem] leading-normal line-clamp-2">
+                  {item.title}
+                </h3>
+                <div className="flex items-center mt-[10px]">
+                  <h4 className="font-medium text-[0.875rem] leading-normal line-clamp-1 opacity-50">
+                    Quantity:
+                  </h4>
+                  <input
+                    type="number"
+                    min={1}
+                    value={item.quantity}
+                    onChange={(e) =>
+                      onQuantityChane(item.id, Number(e.target.value))
+                    }
+                    className="ml-[8px] w-[50px] border outline-none text-center rounded-md"
+                  />
+                </div>
+                <div className="flex mt-[10px] justify-end gap-[10px]">
+                  <h4 className="text-[1rem] leading-normal line-through opacity-50">
+                    ${item.price}
+                  </h4>
+                  <h4 className="mr-[10px] text-[1rem] leading-normal text-second-red font-semibold">
+                    $
+                    {Math.round(
+                      (item.price * (100 - item.discountPercentage)) / 100
+                    )}
+                  </h4>
+                </div>
               </div>
-              <div className="flex mt-[10px] justify-end gap-[10px]">
-                <h4 className="text-[1rem] leading-normal line-through opacity-50">
-                  ${item.price}
-                </h4>
-                <h4 className="mr-[10px] text-[1rem] leading-normal text-second-red font-semibold">
-                  $
-                  {Math.round(
-                    (item.price * (100 - item.discountPercentage)) / 100
-                  )}
-                </h4>
-              </div>
-            </div>
-            <button className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] bg-white text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer">
-              <Cancel />
-            </button>
-          </li>
-        ))}
+              <button
+                onClick={() => onRemoveItemFromCart(item.id)}
+                className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] bg-white text-black flex items-center justify-center outline-none hover:text-second-red hover:cursor-pointer"
+              >
+                <Cancel />
+              </button>
+            </li>
+          ))
+        ) : (
+          <h5 className="text-center my-20">No item in cart</h5>
+        )}
       </ul>
 
       <div className="mt-[24px] flex flex-wrap gap-[10px] justify-end md:justify-between">
@@ -222,7 +250,7 @@ export default function CartPage() {
                     (item.price * (100 - item.discountPercentage)) / 100
                   )
                 );
-              }, 0)}
+              }, 0) ?? 0}
             </h5>
           </div>
           <div className="flex mt-[16px] justify-between items-center pb-[16px] border-b border-[#999999]">
@@ -240,7 +268,7 @@ export default function CartPage() {
                     (item.price * (100 - item.discountPercentage)) / 100
                   )
                 );
-              }, 0)}
+              }, 0) ?? 0}
             </h5>
           </div>
           <div className="flex justify-center mt-[16px]">
@@ -257,6 +285,12 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-    </> //TODO: add loading animation
+      {isLoading && (
+        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white bg-opacity-50">
+          <Spin size="large" />
+          <h3 className="text-[1.25rem] font-normal">Loading...</h3>
+        </div>
+      )}
+    </>
   );
 }
