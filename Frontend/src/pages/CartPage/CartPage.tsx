@@ -82,7 +82,7 @@ export default function CartPage() {
                     {item.discountPercentage}%
                   </td>
                   <td className="font-normal text-[1rem] leading-normal text-center">
-                    {Math.round(
+                    ${Math.round(
                       (item.price * (100 - item.discountPercentage)) / 100
                     )}
                   </td>

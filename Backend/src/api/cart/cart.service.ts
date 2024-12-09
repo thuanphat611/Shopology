@@ -50,6 +50,19 @@ export class CartService {
   }
 
   async addItemToCart(userId: string, data: AddItemDto) {
+    const isItemInCart = await this.cartRepository.findOne({
+      where: {
+        customerId: userId,
+        productId: data.productId,
+      },
+    });
+
+    if (isItemInCart) {
+      isItemInCart.quantity = isItemInCart.quantity + 1;
+      await this.cartRepository.save(isItemInCart);
+      return isItemInCart;
+    }
+
     const newItem = await this.cartRepository.create({
       customerId: userId,
       ...data,
