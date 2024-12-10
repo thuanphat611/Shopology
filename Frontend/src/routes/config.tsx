@@ -13,6 +13,7 @@ import {
   AboutPage,
   SignupPage,
   CartPage,
+  WishListPage,
 } from "@/pages";
 import { useAuth } from "@/hooks";
 
@@ -53,6 +54,14 @@ export default function AppRouter() {
           path: "/cart",
           element: isAuthenticated() ? (
             <CartPage />
+          ) : (
+            <Navigate to="/login" replace />
+          ),
+        },
+        {
+          path: "/wish-list",
+          element: isAuthenticated() ? (
+            <WishListPage />
           ) : (
             <Navigate to="/login" replace />
           ),

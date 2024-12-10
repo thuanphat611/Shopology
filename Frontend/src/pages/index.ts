@@ -5,3 +5,4 @@ export { default as ContactPage } from "./ContactPage";
 export { default as AboutPage } from "./AboutPage";
 export { default as SignupPage } from "./SignupPage";
 export { default as CartPage } from "./CartPage";
+export { default as WishListPage } from "./WishListPage";

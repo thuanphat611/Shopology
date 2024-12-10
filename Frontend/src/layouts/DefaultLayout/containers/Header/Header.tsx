@@ -48,7 +48,7 @@ export default function Header() {
               }}
             />
           </span>
-          <Link to="wishlist" className="hover:text-button-red">
+          <Link to="wish-list" className="hover:text-button-red">
             <Heart />
           </Link>
           <Link to="cart" className="hover:text-button-red text-center">

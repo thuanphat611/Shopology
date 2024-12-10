@@ -1,27 +1,31 @@
-import { Rate } from "antd";
 import { Link } from "react-router-dom";
 
-import { Eye, Heart } from "@/assets/svg";
-import { IProduct } from "@/common/interfaces";
+import { TrashCan } from "@/assets/svg";
 
-import useHandler from "./controller";
+import { IWishListItem } from "../../interfaces";
 
-export default function ProductCard({ data }: { data: IProduct }) {
-  const { onAddToCart, onAddToWishList } = useHandler();
-
+export default function WishListItem({
+  data,
+  onAddToWishList,
+  onRemoveFromWishList,
+}: {
+  data: IWishListItem;
+  onAddToWishList: (productId: string) => Promise<void>;
+  onRemoveFromWishList: (productId: string) => Promise<void>;
+}) {
   return (
     <Link
-      className="w-[150px] md:w-[270px] flex flex-col items-start"
+      className="w-[calc((100%-20px)/2)] md:w-[calc((100%-60px)/4)] flex flex-col items-start"
       to={`/products/${data.id}`}
     >
       <div className="w-full group relative rounded-[4px] overflow-hidden">
         <img
-          src={data.images[0]}
+          src={data.thumbnail}
           alt={data.title}
-          className="bg-second-gray w-full h-[139px] md:h-[250px] object-contain"
+          className="bg-second-gray w-full h-[120px] md:h-[200px] lg:h-[240px] object-contain mb-[40px]"
         />
         {data.discountPercentage > 0 ? (
-          <div className="absolute top-3 left-3 bg-second-red px-3 py-1 rounded-[4px]">
+          <div className="absolute top-1 left-1 md:top-3 md:left-3 bg-second-red px-1 md:px-3 py-1 rounded-[4px]">
             <h5 className="text-white text-[0.75rem]">
               -{data.discountPercentage}%
             </h5>
@@ -31,22 +35,19 @@ export default function ProductCard({ data }: { data: IProduct }) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              onAddToWishList(data.id.toString());
+              onRemoveFromWishList(data.id);
             }}
             className="bg-white rounded-full w-[34px] h-[34px] flex items-center justify-center hover:text-second-red"
           >
-            <Heart />
-          </button>
-          <button className="mt-2 bg-white rounded-full w-[34px] h-[34px] flex items-center justify-center hover:text-second-red">
-            <Eye />
+            <TrashCan />
           </button>
         </div>
         <button
           onClick={(e) => {
             e.preventDefault();
-            onAddToCart(data.id.toString());
+            onAddToWishList(data.id.toString());
           }}
-          className="hidden lg:group-hover:block absolute bottom-0 left-0 right-0 bg-black outline-none hover:bg-primary-black text-white text-[1rem] p-2"
+          className="absolute bottom-0 left-0 right-0 bg-black outline-none hover:bg-primary-black text-white text-[1rem] p-2"
         >
           Add To Cart
         </button>
@@ -61,13 +62,6 @@ export default function ProductCard({ data }: { data: IProduct }) {
             ${data.price}
           </h4>
         ) : null}
-      </div>
-      {/* //TODO: Update product interfaces to show rating count */}
-      <div className="hidden md:flex mt-2">
-        <Rate disabled allowHalf defaultValue={data.rating} />
-        <h4 className="ml-2 text-[0.875rem] font-medium text-black opacity-50">
-          ({2})
-        </h4>
       </div>
     </Link>
   );
