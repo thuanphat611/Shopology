@@ -8,6 +8,7 @@ import { AuthModule } from '@/api/auth/auth.module';
 import { UserModule } from '@/api/user/user.module';
 import { ProductModule } from '@/api/product/product.module';
 import { CartModule } from '@/api/cart/cart.module';
+import { WishListModule } from '@/api/wish-list/wish-list.module';
 
 import { AppController } from './app.controller';
 
@@ -39,6 +40,7 @@ const EnvSchema = Joi.object({
     UserModule,
     ProductModule,
     CartModule,
+    WishListModule,
   ],
   controllers: [AppController],
   providers: [],
