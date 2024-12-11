@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
-import { Input, Avatar, Button, Dropdown } from "antd";
+import { Input, Avatar, Button, Dropdown, Badge } from "antd";
 
 import { Search, Heart, Cart } from "@/assets/svg";
 import { useAuth } from "@/hooks";
@@ -11,7 +11,7 @@ import React from "react";
 export default function Header() {
   const { getUser, isAuthenticated } = useAuth();
   const user = getUser();
-  const { dropdownItems, menuStyle } = useHandler();
+  const { cartCount, wishlistCount, dropdownItems, menuStyle } = useHandler();
 
   return (
     <div className="fixed top-0 left-0 right-0 border-b-[0.5px] border-[#ccc] bg-white z-50">
@@ -48,12 +48,19 @@ export default function Header() {
               }}
             />
           </span>
-          <Link to="wish-list" className="hover:text-button-red">
-            <Heart />
-          </Link>
-          <Link to="cart" className="hover:text-button-red text-center">
-            <Cart />
-          </Link>
+          <Badge count={wishlistCount}>
+            <Link to="wish-list" className="hover:text-button-red text-black">
+              <Heart />
+            </Link>
+          </Badge>
+          <Badge count={cartCount}>
+            <Link
+              to="cart"
+              className="hover:text-button-red text-black text-center"
+            >
+              <Cart />
+            </Link>
+          </Badge>
           {isAuthenticated() ? (
             <Dropdown
               placement="topRight"

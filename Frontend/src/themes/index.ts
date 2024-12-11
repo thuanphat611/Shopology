@@ -18,5 +18,8 @@ export const defaultTheme = {
       lastItemColor: "#000000",
       separatorMargin: 12,
     },
+    Badge: {
+      colorError: "#DB4444",
+    },
   },
 };

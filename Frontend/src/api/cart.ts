@@ -19,6 +19,14 @@ const useGetCartApi = () => {
   return { data, error, isLoading, mutate };
 };
 
+const getCount = async () => {
+  const response = await axiosClient.get(
+    `${import.meta.env.VITE_BACKEND}/api/v1/cart/${user.id}/count`
+  );
+
+  return response.data;
+};
+
 const addItemToCart = async (productId: string, quantity: number) => {
   if (!user) {
     window.location.href = "/login";
@@ -64,4 +72,5 @@ export const CartService = {
   addItemToCart,
   removeItemFromCart,
   changeItemQuantity,
+  getCount,
 };

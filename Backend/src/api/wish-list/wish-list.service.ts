@@ -17,6 +17,18 @@ export class WishListService {
     private readonly cartService: CartService,
   ) {}
 
+  async getCount(userId: string) {
+    const wishListItems = await this.wishListRepository.find({
+      where: {
+        customerId: userId,
+      },
+    });
+
+    return {
+      count: wishListItems.length,
+    };
+  }
+
   async getWishList(userId: string) {
     const selectedFields = [
       'title',

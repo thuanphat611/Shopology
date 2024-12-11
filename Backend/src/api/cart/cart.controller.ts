@@ -22,6 +22,12 @@ export class CartController {
   constructor(private cartService: CartService) {}
 
   @HttpCode(HttpStatus.OK)
+  @Get(':id/count')
+  async getCount(@Param('id') userId: string) {
+    return this.cartService.getCount(userId);
+  }
+
+  @HttpCode(HttpStatus.OK)
   @Get(':id')
   async getCart(@Param('id') userId: string) {
     return this.cartService.getCart(userId);

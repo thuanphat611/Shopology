@@ -16,6 +16,18 @@ export class CartService {
     private readonly httpService: HttpService,
   ) {}
 
+  async getCount(userId: string) {
+    const cartItems = await this.cartRepository.find({
+      where: {
+        customerId: userId,
+      },
+    });
+
+    return {
+      count: cartItems.length,
+    };
+  }
+
   async getCart(userId: string) {
     const selectedFields = [
       'title',

@@ -19,6 +19,14 @@ const useGetWishListApi = () => {
   return { data, error, isLoading, mutate };
 };
 
+const getCount = async () => {
+  const response = await axiosClient.get(
+    `${import.meta.env.VITE_BACKEND}/api/v1/wish-list/${user.id}/count`
+  );
+
+  return response.data;
+};
+
 const addItemToWishList = async (productId: string) => {
   if (!user) {
     window.location.href = "/login";
@@ -62,4 +70,5 @@ export const WishListService = {
   addItemToWishList,
   removeItemFromWishList,
   addAllToCart,
+  getCount,
 };

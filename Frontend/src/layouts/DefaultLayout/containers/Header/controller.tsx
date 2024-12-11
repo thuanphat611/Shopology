@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { MenuProps } from "antd";
 
 import { MallBox, User, Cancel, Review, Logout } from "@/assets/svg";
 import { useAuth } from "@/hooks";
 import { AuthService } from "@/api";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { fetchCartCount, selectCartCount } from "@/app/slices/cartSlice";
+import {
+  fetchWishListCount,
+  selectWishListCount,
+} from "@/app/slices/wishlistSlice";
 
 const menuStyle: React.CSSProperties = {
   background: "rgba(0,0,0,0.35)",
@@ -11,7 +18,15 @@ const menuStyle: React.CSSProperties = {
 };
 
 export default function useHandler() {
+  const dispatch = useAppDispatch();
+  const cartCount = useAppSelector(selectCartCount);
+  const wishlistCount = useAppSelector(selectWishListCount);
   const { logout } = useAuth();
+
+  useEffect(() => {
+    dispatch(fetchCartCount());
+    dispatch(fetchWishListCount());
+  }, [dispatch]);
 
   const dropdownItems: MenuProps["items"] = [
     {
@@ -81,6 +96,8 @@ export default function useHandler() {
   }
 
   return {
+    cartCount,
+    wishlistCount,
     dropdownItems,
     menuStyle,
   };

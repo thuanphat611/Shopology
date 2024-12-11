@@ -5,7 +5,7 @@ import useHandler from "./controller";
 import { Cancel } from "@/assets/svg";
 
 export default function CartPage() {
-  const { data, isLoading, onRemoveItemFromCart, onQuantityChane } =
+  const { data, isLoading, onRemoveItemFromCart, onQuantityChange } =
     useHandler();
 
   return (
@@ -73,7 +73,7 @@ export default function CartPage() {
                       min={1}
                       value={item.quantity}
                       onChange={(e) =>
-                        onQuantityChane(item.id, Number(e.target.value))
+                        onQuantityChange(item.id, Number(e.target.value))
                       }
                       className="w-[50px] border outline-none text-center rounded-md"
                     />
@@ -141,7 +141,7 @@ export default function CartPage() {
                     min={1}
                     value={item.quantity}
                     onChange={(e) =>
-                      onQuantityChane(item.id, Number(e.target.value))
+                      onQuantityChange(item.id, Number(e.target.value))
                     }
                     className="ml-[8px] w-[50px] border outline-none text-center rounded-md"
                   />

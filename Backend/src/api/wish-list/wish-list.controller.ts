@@ -21,6 +21,12 @@ export class WishListController {
   constructor(private wishListService: WishListService) {}
 
   @HttpCode(HttpStatus.OK)
+  @Get(':id/count')
+  async getCount(@Param('id') userId: string) {
+    return this.wishListService.getCount(userId);
+  }
+
+  @HttpCode(HttpStatus.OK)
   @Get(':id')
   async getWishList(@Param('id') userId: string) {
     return this.wishListService.getWishList(userId);
