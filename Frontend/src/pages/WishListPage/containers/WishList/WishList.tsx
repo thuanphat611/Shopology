@@ -9,7 +9,7 @@ export default function WishList() {
 
   return (
     <div>
-      <div className="relative mt-4 md:mt-10 md:mb-[140px] flex justify-start flex-wrap gap-y-10 gap-[20px]">
+      <div className="relative mt-4 md:mt-10 mb-[40px] md:mb-[140px] flex justify-start flex-wrap gap-y-10 gap-[20px]">
         {data && data.itemList.length > 0 ? (
           data?.itemList.map((item) => (
             <WishListItem
@@ -24,7 +24,7 @@ export default function WishList() {
         )}
       </div>
       {isLoading && (
-        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white">
+        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white z-10">
           <Spin size="large" />
           <h3 className="text-[1.25rem] font-normal">Loading...</h3>
         </div>

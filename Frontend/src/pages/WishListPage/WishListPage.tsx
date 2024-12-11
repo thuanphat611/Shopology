@@ -1,6 +1,6 @@
 import { Breadcrumb, Button } from "antd";
 
-import { WishList } from "./containers";
+import { JustForYou, WishList } from "./containers";
 import useHandler from "./controller";
 
 export default function WishListPage() {
@@ -35,6 +35,7 @@ export default function WishListPage() {
       </div>
 
       <WishList />
+      <JustForYou />
     </>
   );
 }

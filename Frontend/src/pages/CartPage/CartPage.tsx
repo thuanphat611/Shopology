@@ -287,7 +287,7 @@ export default function CartPage() {
         </div>
       </div>
       {isLoading && (
-        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white">
+        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white z-10">
           <Spin size="large" />
           <h3 className="text-[1.25rem] font-normal">Loading...</h3>
         </div>

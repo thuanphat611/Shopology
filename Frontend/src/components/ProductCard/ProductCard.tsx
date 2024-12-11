@@ -1,12 +1,18 @@
 import { Rate } from "antd";
 import { Link } from "react-router-dom";
 
-import { Eye, Heart } from "@/assets/svg";
+import { Heart } from "@/assets/svg";
 import { IProduct } from "@/common/interfaces";
 
 import useHandler from "./controller";
 
-export default function ProductCard({ data }: { data: IProduct }) {
+export default function ProductCard({
+  data,
+  showWishListButton = true,
+}: {
+  data: IProduct;
+  showWishListButton: boolean;
+}) {
   const { onAddToCart, onAddToWishList } = useHandler();
 
   return (
@@ -28,18 +34,17 @@ export default function ProductCard({ data }: { data: IProduct }) {
           </div>
         ) : null}
         <div className="absolute top-3 right-3">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onAddToWishList(data.id.toString());
-            }}
-            className="bg-white rounded-full w-[34px] h-[34px] flex items-center justify-center hover:text-second-red"
-          >
-            <Heart />
-          </button>
-          <button className="mt-2 bg-white rounded-full w-[34px] h-[34px] flex items-center justify-center hover:text-second-red">
-            <Eye />
-          </button>
+          {showWishListButton && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onAddToWishList(data.id.toString());
+              }}
+              className="bg-white rounded-full w-[34px] h-[34px] flex items-center justify-center hover:text-second-red"
+            >
+              <Heart />
+            </button>
+          )}
         </div>
         <button
           onClick={(e) => {
