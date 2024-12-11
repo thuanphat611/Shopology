@@ -24,7 +24,7 @@ export default function WishList() {
         )}
       </div>
       {isLoading && (
-        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white bg-opacity-50">
+        <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white">
           <Spin size="large" />
           <h3 className="text-[1.25rem] font-normal">Loading...</h3>
         </div>

@@ -46,8 +46,20 @@ const removeItemFromWishList = async (productId: string) => {
   );
 };
 
+const addAllToCart = async () => {
+  if (!user) {
+    window.location.href = "/login";
+    return;
+  }
+
+  await axiosClient.post(
+    `${import.meta.env.VITE_BACKEND}/api/v1/wish-list/${user.id}/add-all`
+  );
+};
+
 export const WishListService = {
   useGetWishListApi,
   addItemToWishList,
   removeItemFromWishList,
+  addAllToCart,
 };

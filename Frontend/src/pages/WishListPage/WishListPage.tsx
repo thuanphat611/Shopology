@@ -1,8 +1,11 @@
 import { Breadcrumb, Button } from "antd";
 
 import { WishList } from "./containers";
+import useHandler from "./controller";
 
 export default function WishListPage() {
+  const { onAddAllToCart } = useHandler();
+
   return (
     <>
       <div className="mt-[80px] mb-[60px] flex flex-wrap gap-[40px] justify-between">
@@ -17,6 +20,7 @@ export default function WishListPage() {
           ]}
         />
         <Button
+          onClick={onAddAllToCart}
           type="primary"
           style={{
             padding: "16px 48px",

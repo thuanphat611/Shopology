@@ -26,6 +26,11 @@ export class WishListController {
     return this.wishListService.getWishList(userId);
   }
 
+  @Post(':id/add-all')
+  async addAllItemsToCart(@Param('id') userId: string) {
+    return this.wishListService.addAllToCart(userId);
+  }
+
   @Post(':id')
   async addItemToWishList(
     @Param('id') userId: string,

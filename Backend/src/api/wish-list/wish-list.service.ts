@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 
+import { CartService } from '../cart/cart.service';
+
 import { WishListItem } from './entities';
 import { WishListRepository } from './wishList.repository';
 
@@ -12,6 +14,7 @@ export class WishListService {
     @InjectRepository(WishListItem)
     private wishListRepository: WishListRepository,
     private readonly httpService: HttpService,
+    private readonly cartService: CartService,
   ) {}
 
   async getWishList(userId: string) {
@@ -75,5 +78,27 @@ export class WishListService {
       customerId: userId,
       productId,
     });
+  }
+
+  async addAllToCart(userId: string) {
+    const items = await this.wishListRepository.find({
+      where: {
+        customerId: userId,
+      },
+    });
+
+    const itemIds = items.map((item) => item.productId);
+
+    const addeditemList = [];
+
+    for (const id of itemIds) {
+      const addedItem = await this.cartService.addItemToCart(userId, {
+        productId: id,
+        quantity: 1,
+      });
+      addeditemList.push(addedItem);
+    }
+
+    return { itemList: addeditemList };
   }
 }
