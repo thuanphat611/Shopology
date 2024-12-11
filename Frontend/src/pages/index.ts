@@ -6,3 +6,4 @@ export { default as AboutPage } from "./AboutPage";
 export { default as SignupPage } from "./SignupPage";
 export { default as CartPage } from "./CartPage";
 export { default as WishListPage } from "./WishListPage";
+export { default as CheckOutPage } from "./CheckOutPage";

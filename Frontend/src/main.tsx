@@ -28,6 +28,9 @@ createRoot(document.getElementById("root")!).render(
             draggable
             pauseOnHover
             theme="light"
+            style={{
+              marginTop: "80px",
+            }}
           />
         </StyleProvider>
       </ConfigProvider>

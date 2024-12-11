@@ -5,8 +5,15 @@ import useHandler from "./controller";
 import { Cancel } from "@/assets/svg";
 
 export default function CartPage() {
-  const { data, isLoading, onRemoveItemFromCart, onQuantityChange } =
-    useHandler();
+  const {
+    data,
+    isLoading,
+    chosenItems,
+    onRemoveItemFromCart,
+    onQuantityChange,
+    onCheckboxClick,
+    onCheckOut,
+  } = useHandler();
 
   return (
     <>
@@ -26,7 +33,8 @@ export default function CartPage() {
       <table className="w-full hidden md:table table-fixed">
         <thead className="w-full">
           <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
-            <th className="md:w-[350px] lg:w-[500px] font-normal text-[1rem] leading-normal text-start pl-10">
+            <th className="w-[80px] font-normal text-[1rem] leading-normal text-start pl-10"></th>
+            <th className="md:w-[350px] lg:w-[500px] font-normal text-[1rem] leading-normal text-start">
               Product
             </th>
             <th className="font-normal text-[1rem] leading-normal text-center">
@@ -52,7 +60,14 @@ export default function CartPage() {
             data?.itemList.map((item, index) => (
               <React.Fragment key={`${index}-${item.addedDate}`}>
                 <tr className="w-full h-[72px] rounded-[4px] shadow-md border">
-                  <td className="font-normal text-[1rem] leading-normal text-start pl-10">
+                  <td className="font-normal text-[1rem] leading-normal text-center">
+                    <input
+                      type="checkbox"
+                      onChange={(e) => onCheckboxClick(e, item)}
+                      className="accent-second-red w-[20px] h-[20px] border outline-none text-center rounded-md"
+                    />
+                  </td>
+                  <td className="font-normal text-[1rem] leading-normal text-start">
                     <div className="flex h-full items-center gap-[20px] ">
                       <img
                         src={item.thumbnail}
@@ -123,10 +138,15 @@ export default function CartPage() {
               key={`${index}-${item.title}`}
               className="relative flex items-start p-[10px] rounded-[4px] shadow-md border mb-[24px]"
             >
+              <input
+                type="checkbox"
+                onChange={(e) => onCheckboxClick(e, item)}
+                className="absolute top-1/2 left-[10px] -translate-y-1/2 accent-second-red w-[20px] h-[20px] border outline-none text-center rounded-md"
+              />
               <img
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px]"
+                className="w-[100px] h-[100px] object-cover bg-[#F5F5F5] rounded-[4px] ml-[30px]"
               />
               <div className="grow ml-[10px] flex flex-col">
                 <h3 className="font-normal text-[1rem] leading-normal line-clamp-2">
@@ -244,14 +264,14 @@ export default function CartPage() {
             <h5 className="text-[1rem] leading-normal">Subtotal:</h5>
             <h5 className="text-[1rem] leading-normal">
               $
-              {data?.itemList.reduce((accumulator, item) => {
+              {chosenItems.reduce((accumulator, item) => {
                 return (
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
                   )
                 );
-              }, 0) ?? 0}
+              }, 0)}
             </h5>
           </div>
           <div className="flex mt-[16px] justify-between items-center pb-[16px] border-b border-[#999999]">
@@ -262,18 +282,19 @@ export default function CartPage() {
             <h5 className="text-[1rem] leading-normal">Total:</h5>
             <h5 className="text-[1rem] leading-normal">
               $
-              {data?.itemList.reduce((accumulator, item) => {
+              {chosenItems.reduce((accumulator, item) => {
                 return (
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
                   )
                 );
-              }, 0) ?? 0}
+              }, 0)}
             </h5>
           </div>
           <div className="flex justify-center mt-[16px]">
             <Button
+              onClick={onCheckOut}
               type="primary"
               style={{
                 padding: "16px 48px",

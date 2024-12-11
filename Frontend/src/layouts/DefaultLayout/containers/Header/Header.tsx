@@ -35,7 +35,7 @@ export default function Header() {
           </Link>
         </ul>
 
-        <div className="flex items-center space-x-3 md:space-x-6">
+        <div className="flex items-center space-x-5 md:space-x-6">
           <span className="hidden lg:block">
             <Input
               placeholder="What are you looking for?"
@@ -77,7 +77,8 @@ export default function Header() {
                 src={user?.avatar}
                 icon={<UserOutlined />}
                 style={{
-                  backgroundColor: "#DB4444",
+                  backgroundColor: "transparent",
+                  color: 'black',
                   minHeight: "32px",
                   minWidth: "32px",
                 }}
