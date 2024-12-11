@@ -33,7 +33,7 @@ const bannerList = [
   },
   {
     id: uuidv4(),
-    name: "Nitendo Member Sale",
+    name: "Nintendo Member Sale",
     text: "Up to 50% off for members",
     brandLogo: <NintendoLogo />,
     image: SaleBanner4,

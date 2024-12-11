@@ -9,7 +9,7 @@ export default function WishList() {
 
   return (
     <div>
-      <div className="relative mt-4 md:mt-10 mb-[40px] md:mb-[140px] flex justify-start flex-wrap gap-y-10 gap-[20px]">
+      <div className="relative mt-4 md:mt-10 mb-[60px] flex justify-start flex-wrap gap-y-10 gap-[20px]">
         {data && data.itemList.length > 0 ? (
           data?.itemList.map((item) => (
             <WishListItem
