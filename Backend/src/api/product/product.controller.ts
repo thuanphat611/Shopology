@@ -3,7 +3,7 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { Public } from '@/decorators';
 
 import { ProductService } from './product.service';
-import { GetAllProductsDto } from './dto';
+import { GetAllProductsDto, GetByIdListDto } from './dto';
 
 @Public()
 @Controller('product')
@@ -13,6 +13,12 @@ export class ProductController {
   @Get()
   async getAll(@Query() query: GetAllProductsDto) {
     return this.productService.getAll(query);
+  }
+
+  @Get('list')
+  async getByIdList(@Query() query: GetByIdListDto) {
+    console.log('here');
+    return this.productService.getByIdList(query.ids);
   }
 
   @Get('category/:category')

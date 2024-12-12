@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { map, catchError } from 'rxjs';
+import { map, catchError, lastValueFrom } from 'rxjs';
 
 import { GetAllProductsDto } from './dto';
 
@@ -44,6 +44,27 @@ export class ProductService {
         throw new BadRequestException(error.response.data.message);
       }),
     );
+  }
+
+  async getByIdList(productIds: string[]) {
+    const selectedFields = [
+      'title',
+      'thumbnail',
+      'price',
+      'discountPercentage',
+    ];
+
+    const apiUrl = `https://dummyjson.com/products?select=${selectedFields.join(',')}`;
+
+    const productResponse = await lastValueFrom(this.httpService.get(apiUrl));
+
+    const products = productResponse.data.products;
+
+    const result = products.filter((product) =>
+      productIds.includes(product.id.toString()),
+    );
+
+    return { itemList: result };
   }
 
   async getByCategory(category: string) {
