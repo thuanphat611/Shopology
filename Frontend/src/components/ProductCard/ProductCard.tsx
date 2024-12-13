@@ -11,7 +11,7 @@ export default function ProductCard({
   showWishListButton = true,
 }: {
   data: IProduct;
-  showWishListButton: boolean;
+  showWishListButton?: boolean;
 }) {
   const { onAddToCart, onAddToWishList } = useHandler();
 
@@ -22,6 +22,7 @@ export default function ProductCard({
     >
       <div className="w-full group relative rounded-[4px] overflow-hidden">
         <img
+          loading="lazy"
           src={data.images[0]}
           alt={data.title}
           className="bg-second-gray w-full h-[139px] md:h-[250px] object-contain"

@@ -14,6 +14,10 @@ import PlayStation from "./PlayStation.png";
 import Woman from "./Woman.png";
 import Speakers from "./Speakers.png";
 import Perfume from "./Perfume.png";
+import Bkash from "./Bkash.png";
+import Mastercard from "./Mastercard.png";
+import Nagad from "./Nagad.png";
+import Visa from "./Visa.png";
 
 export {
   LoginSideImage,
@@ -32,4 +36,8 @@ export {
   Woman,
   Speakers,
   Perfume,
+  Bkash,
+  Mastercard,
+  Nagad,
+  Visa,
 };
