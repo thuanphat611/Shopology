@@ -5,9 +5,10 @@ import { CartService } from "@/api/cart";
 import { apiErrorHandler } from "@/utils/functions";
 import { useAppDispatch } from "@/app/hooks";
 import { fetchCartCount } from "@/app/slices/cartSlice";
+import { showError } from "@/service";
+import { CHECKOUT_KEY } from "@/utils/constants";
 
 import { ICartItem } from "./interfaces";
-import { showError } from "@/service";
 
 export default function useHandler() {
   const { data, error, isLoading, mutate } = CartService.useGetCartApi();
@@ -56,14 +57,14 @@ export default function useHandler() {
       return;
     }
 
-    const chosenItemIds = chosenItems.map((item) => item.id);
-    const chosenItemQuantity = chosenItems.map((item) => item.quantity);
+    const chosenItemList = chosenItems.map((item) => ({
+      id: item.id,
+      quantity: item.quantity,
+    }));
 
-    const url = `/check-out?ids=${chosenItemIds.join(
-      ","
-    )}&quantity=${chosenItemQuantity.join(",")}`;
+    localStorage.setItem(CHECKOUT_KEY, JSON.stringify(chosenItemList));
 
-    navigate(url);
+    navigate("/check-out");
   }
 
   return {

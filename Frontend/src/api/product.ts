@@ -53,8 +53,20 @@ const useExploreProductApi = ({
   return { data, error, isLoading };
 };
 
+const useCheckOutDataApi = (idList: string[]) => {
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_BACKEND}/api/v1/product/list?ids=${idList.join(
+      ","
+    )}`,
+    (url) => axiosClient.get(url).then((response) => response.data)
+  );
+
+  return { data, error, isLoading };
+};
+
 export const ProductService = {
   useFlashSaleApi,
   useBestSellerApi,
   useExploreProductApi,
+  useCheckOutDataApi,
 };

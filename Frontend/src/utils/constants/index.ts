@@ -1,3 +1,4 @@
 export const USER_KEY = "USER_KEY";
 export const ACCESS_TOKEN_KEY = "ACCESS_TOKEN_KEY";
 export const REFRESH_TOKEN_KEY = "REFRESH_TOKEN_KEY";
+export const CHECKOUT_KEY = "CHECKOUT_KEY";
