@@ -17,7 +17,6 @@ export class ProductController {
 
   @Get('list')
   async getByIdList(@Query() query: GetByIdListDto) {
-    console.log('here');
     return this.productService.getByIdList(query.ids);
   }
 

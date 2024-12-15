@@ -5,3 +5,9 @@ export class UserExistException extends BadRequestException {
     super('User with that email or phone number already exists.');
   }
 }
+
+export class UserNotFoundException extends BadRequestException {
+  constructor() {
+    super('User not found.');
+  }
+}

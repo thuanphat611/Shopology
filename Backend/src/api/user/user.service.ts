@@ -5,7 +5,8 @@ import { SignupDto } from '../auth/dto';
 
 import { User } from './entities';
 import { UserRepository } from './user.repository';
-import { UserExistException } from './user.exception';
+import { UserExistException, UserNotFoundException } from './user.exception';
+import { UpdateUserDto } from './dto';
 
 @Injectable()
 export class UserService {
@@ -51,5 +52,33 @@ export class UserService {
     await this.userRepository.save(createdUser);
 
     return createdUser;
+  }
+
+  async update(id: string, data: UpdateUserDto) {
+    const user = await this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!user) {
+      throw new UserNotFoundException();
+    }
+
+    await this.userRepository.save({
+      id: user.id,
+      ...data,
+    });
+
+    if (data.password) {
+      user.password = data.password;
+      await this.userRepository.save(user);
+    }
+
+    return this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 }
