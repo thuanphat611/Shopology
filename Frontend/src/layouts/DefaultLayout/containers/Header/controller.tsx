@@ -18,15 +18,18 @@ const menuStyle: React.CSSProperties = {
 };
 
 export default function useHandler() {
+  const { isAuthenticated } = useAuth();
   const dispatch = useAppDispatch();
   const cartCount = useAppSelector(selectCartCount);
   const wishlistCount = useAppSelector(selectWishListCount);
   const { logout } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchCartCount());
-    dispatch(fetchWishListCount());
-  }, [dispatch]);
+    if (isAuthenticated()) {
+      dispatch(fetchCartCount());
+      dispatch(fetchWishListCount());
+    }
+  }, [dispatch, isAuthenticated]);
 
   const dropdownItems: MenuProps["items"] = [
     {
