@@ -56,7 +56,7 @@ export class UserService {
     return createdUser;
   }
 
-  async update(id: string, data: UpdateUserDto) {
+  async update(id: string, data: UpdateUserDto): Promise<User> {
     const user = await this.userRepository.findOne({
       where: {
         id,

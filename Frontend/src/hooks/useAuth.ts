@@ -12,11 +12,11 @@ export default function useAuth() {
     localStorage.setItem(USER_KEY, JSON.stringify(data.userInfo));
   }
 
-  function getUser(): IUserInfo | null {
+  function getUser(): IUserInfo | undefined {
     const data = localStorage.getItem(USER_KEY);
 
     if (data) return JSON.parse(data);
-    else return null;
+    else return undefined;
   }
 
   function getAccessToken(): string {
