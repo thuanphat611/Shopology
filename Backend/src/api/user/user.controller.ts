@@ -1,14 +1,22 @@
-import { Body, Controller, Put } from '@nestjs/common';
+import { Body, Controller, Post, Put } from '@nestjs/common';
 
 import { ReqUser } from '@/decorators';
 
 import { UserService } from './user.service';
-import { UpdateUserDto } from './dto';
+import { UpdateUserDto, ValidatePasswordDto } from './dto';
 import { User } from './entities';
 
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
+
+  @Post('/validate-password')
+  async validatePassword(
+    @ReqUser() user: User,
+    @Body() body: ValidatePasswordDto,
+  ) {
+    return this.userService.validatePassword(user, body.password);
+  }
 
   @Put()
   async updateUser(@Body() data: UpdateUserDto, @ReqUser() user: User) {

@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { compare } from 'bcrypt';
 
 import { SignupDto } from '../auth/dto';
+import { WrongCredentialException } from '../auth/auth.exception';
 
 import { User } from './entities';
 import { UserRepository } from './user.repository';
@@ -80,5 +82,25 @@ export class UserService {
         id,
       },
     });
+  }
+
+  async validatePassword(user: User, password: string) {
+    const isUserExist = await this.userRepository.findOne({
+      where: {
+        email: user.email,
+      },
+    });
+    if (!isUserExist) {
+      throw new WrongCredentialException();
+    }
+
+    const isPasswordMatching = await compare(password, user.password);
+    if (!isPasswordMatching) {
+      throw new BadRequestException('Password is not correct');
+    }
+
+    return {
+      isPasswordValid: !!isPasswordMatching,
+    };
   }
 }
