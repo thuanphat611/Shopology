@@ -16,11 +16,9 @@ import {
   WishListPage,
   CheckOutPage,
 } from "@/pages";
-import { useAuth } from "@/hooks";
+import PrivateRoute from "./PrivateRoute";
 
 export default function AppRouter() {
-  const { isAuthenticated } = useAuth();
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -53,26 +51,26 @@ export default function AppRouter() {
         },
         {
           path: "/cart",
-          element: isAuthenticated() ? (
-            <CartPage />
-          ) : (
-            <Navigate to="/login" replace />
+          element: (
+            <PrivateRoute>
+              <CartPage />
+            </PrivateRoute>
           ),
         },
         {
           path: "/wish-list",
-          element: isAuthenticated() ? (
-            <WishListPage />
-          ) : (
-            <Navigate to="/login" replace />
+          element: (
+            <PrivateRoute>
+              <WishListPage />
+            </PrivateRoute>
           ),
         },
         {
           path: "/check-out",
-          element: isAuthenticated() ? (
-            <CheckOutPage />
-          ) : (
-            <Navigate to="/login" replace />
+          element: (
+            <PrivateRoute>
+              <CheckOutPage />
+            </PrivateRoute>
           ),
         },
       ],

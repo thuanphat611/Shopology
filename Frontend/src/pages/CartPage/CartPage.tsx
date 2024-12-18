@@ -121,7 +121,7 @@ export default function CartPage() {
           ) : (
             <tr>
               <td
-                colSpan={5}
+                colSpan={7}
                 className="font-normal text-[1rem] leading-normal text-center"
               >
                 No item in cart
