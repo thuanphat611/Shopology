@@ -53,7 +53,6 @@ export default function FlashSale() {
       </div>
 
       <div className="flex my-[30px] md:my-[60px] justify-center">
-        {/* //TODO: Create a view all products endpoint */}
         <Button type="primary" style={{ height: "56px", padding: "10px 48px" }}>
           View All Products
         </Button>

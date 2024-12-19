@@ -68,7 +68,6 @@ export default function ProductCard({
           </h4>
         ) : null}
       </div>
-      {/* //TODO: Update product interfaces to show rating count */}
       <div className="hidden md:flex mt-2">
         <Rate disabled allowHalf defaultValue={data.rating} />
         <h4 className="ml-2 text-[0.875rem] font-medium text-black opacity-50">

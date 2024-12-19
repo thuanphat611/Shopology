@@ -16,6 +16,7 @@ import {
   WishListPage,
   CheckOutPage,
   AccountPage,
+  ProductPage,
 } from "@/pages";
 import PrivateRoute from "./PrivateRoute";
 
@@ -81,6 +82,10 @@ export default function AppRouter() {
               <AccountPage />
             </PrivateRoute>
           ),
+        },
+        {
+          path: "/products/:id",
+          element: <ProductPage />,
         },
       ],
     },
