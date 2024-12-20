@@ -9,11 +9,7 @@ const configService = new ConfigService();
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: configService.get('DATABASE_HOST'),
-  port: parseInt(configService.get('DATABASE_PORT'), 10) || 5432,
-  database: configService.get('DATABASE_NAME'),
-  username: configService.get('DATABASE_USERNAME'),
-  password: configService.get('DATABASE_PASSWORD'),
+  url: configService.get('DATABASE_CONNECTION_STRING'),
 
   entities: [`${__dirname}/../**/*.entity.{js,ts}`],
   migrations: [`${__dirname}/../database/migrations/**/*{.ts,.js}`],

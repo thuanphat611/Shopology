@@ -16,11 +16,7 @@ const EnvSchema = Joi.object({
   PORT: Joi.number().required(),
 
   DATABASE_TYPE: Joi.string().required(),
-  DATABASE_HOST: Joi.string().required(),
-  DATABASE_PORT: Joi.number().required(),
-  DATABASE_NAME: Joi.string().required(),
-  DATABASE_USERNAME: Joi.string().required(),
-  DATABASE_PASSWORD: Joi.string().required(),
+  DATABASE_CONNECTION_STRING: Joi.string().required(),
 
   JWT_SECRET: Joi.string().required(),
   JWT_REFRESH_SECRET: Joi.string().required(),
