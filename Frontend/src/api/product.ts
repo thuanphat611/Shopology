@@ -2,6 +2,7 @@ import useSWR, { Fetcher } from "swr";
 
 import { axiosClient } from "@/service";
 import { IProductApiResponse } from "@/pages/HomePage";
+import { IProduct } from "@/common/interfaces";
 
 const fetcher: Fetcher<
   IProductApiResponse,
@@ -64,9 +65,19 @@ const useCheckOutDataApi = (idList: string[]) => {
   return { data, error, isLoading };
 };
 
+const useFindByIdApi = (id: string) => {
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_BACKEND}/api/v1/product/${id}`,
+    (url) => axiosClient.get<IProduct>(url).then((response) => response.data)
+  );
+
+  return { data, error, isLoading };
+};
+
 export const ProductService = {
   useFlashSaleApi,
   useBestSellerApi,
   useExploreProductApi,
   useCheckOutDataApi,
+  useFindByIdApi,
 };

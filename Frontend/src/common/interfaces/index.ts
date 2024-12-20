@@ -10,6 +10,8 @@ export interface IProduct {
   stock: number;
   images: string[];
 
+  returnPolicy?: string;
+  shippingInformation?: string;
   weight?: number;
   tags?: string[];
   thumbnail?: string;

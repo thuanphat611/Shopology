@@ -5,7 +5,7 @@ export default function AppFeatures() {
     <div className="flex flex-col md:flex-row gap-[30px] justify-center">
       <div className="grow basis-1/3 flex flex-col items-center">
         <div className="w-20 h-20 rounded-full bg-[#C3C3C4] flex items-center justify-center">
-          <div className="w-[58px] h-[58px] rounded-full bg-black flex items-center justify-center">
+          <div className="w-[58px] text-[#FAFAFA] h-[58px] rounded-full bg-black flex items-center justify-center">
             <Delivery />
           </div>
         </div>

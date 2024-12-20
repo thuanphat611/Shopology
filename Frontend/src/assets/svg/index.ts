@@ -36,3 +36,4 @@ export { default as SmartWatch } from "./SmartWatch.tsx";
 export { default as Computer } from "./Computer.tsx";
 export { default as CellPhone } from "./CellPhone.tsx";
 export { default as TrashCan } from "./TrashCan.tsx";
+export { default as Return } from "./Return.tsx";
