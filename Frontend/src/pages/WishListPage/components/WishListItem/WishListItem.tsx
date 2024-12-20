@@ -22,7 +22,7 @@ export default function WishListItem({
         <img
           src={data.thumbnail}
           alt={data.title}
-          className="bg-second-gray w-full h-[120px] md:h-[200px] lg:h-[240px] object-contain mb-[40px]"
+          className="bg-second-gray w-full h-[120px] md:h-[200px] lg:h-[240px] object-contain mb-[40px] bg-no-repeat"
         />
         {data.discountPercentage > 0 ? (
           <div className="absolute top-1 left-1 md:top-3 md:left-3 bg-second-red px-1 md:px-3 py-1 rounded-[4px]">

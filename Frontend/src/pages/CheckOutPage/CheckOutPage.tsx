@@ -134,7 +134,7 @@ export default function CheckOutPage() {
           </Form>
         </div>
         <div className="grow flex flex-col">
-          <ul className="flex w-full flex-col gap-[32px] lg:max-h-[300px] lg:overflow-auto mb-[32px]">
+          <ul className="flex w-full flex-col gap-[32px] lg:max-h-[300px] lg:overflow-auto mb-[32px] pt-2">
             {data
               ? data.map((item: ICheckoutItem) => (
                   <li
@@ -142,11 +142,16 @@ export default function CheckOutPage() {
                     className="flex justify-between items-center"
                   >
                     <div className="flex items-center">
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="w-[80px] h-[80px] lg:w-[54px] lg:h-[54px] object-cover"
-                      />
+                      <div className="relative">
+                        <img
+                          src={item.thumbnail}
+                          alt={item.title}
+                          className="w-[80px] h-[80px] lg:w-[54px] lg:h-[54px] object-cover"
+                        />
+                        <h5 className="text-second-red absolute top-0 right-0 translate-x-1/2 -translate-y-1/2">
+                          x {item.quantity}
+                        </h5>
+                      </div>
                       <h4 className="text-[1rem] leading-normal ml-[24px] line-clamp-1">
                         {item.title}
                       </h4>
@@ -170,7 +175,8 @@ export default function CheckOutPage() {
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
-                  )
+                  ) *
+                    item.quantity
                 );
               }, 0) ?? 0}
             </h4>
@@ -188,7 +194,8 @@ export default function CheckOutPage() {
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
-                  )
+                  ) *
+                    item.quantity
                 );
               }, 0) ?? 0}
             </h4>

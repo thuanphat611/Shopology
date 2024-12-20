@@ -4,8 +4,7 @@ export interface ICheckoutItem {
   thumbnail: string;
   price: number;
   discountPercentage: number;
-
-  quantity?: number;
+  quantity: number;
 }
 
 export interface FieldType {

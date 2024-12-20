@@ -74,10 +74,23 @@ const useFindByIdApi = (id: string) => {
   return { data, error, isLoading };
 };
 
+const useRelatedProductApi = (category: string) => {
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_BACKEND}/api/v1/product/category/${category}`,
+    (url) =>
+      axiosClient
+        .get<IProductApiResponse>(url)
+        .then((response) => response.data)
+  );
+
+  return { data, error, isLoading };
+};
+
 export const ProductService = {
   useFlashSaleApi,
   useBestSellerApi,
   useExploreProductApi,
   useCheckOutDataApi,
   useFindByIdApi,
+  useRelatedProductApi,
 };

@@ -100,7 +100,7 @@ export default function CartPage() {
                     $
                     {Math.round(
                       (item.price * (100 - item.discountPercentage)) / 100
-                    )}
+                    ) * item.quantity}
                   </td>
                   <td className="w-[70px]">
                     <div className="flex justify-start items-center">
@@ -168,13 +168,13 @@ export default function CartPage() {
                 </div>
                 <div className="flex mt-[10px] justify-end gap-[10px]">
                   <h4 className="text-[1rem] leading-normal line-through opacity-50">
-                    ${item.price}
+                    ${item.price * item.quantity}
                   </h4>
                   <h4 className="mr-[10px] text-[1rem] leading-normal text-second-red font-semibold">
                     $
                     {Math.round(
                       (item.price * (100 - item.discountPercentage)) / 100
-                    )}
+                    ) * item.quantity}
                   </h4>
                 </div>
               </div>
@@ -269,7 +269,8 @@ export default function CartPage() {
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
-                  )
+                  ) *
+                    item.quantity
                 );
               }, 0)}
             </h5>
@@ -287,7 +288,8 @@ export default function CartPage() {
                   accumulator +
                   Math.round(
                     (item.price * (100 - item.discountPercentage)) / 100
-                  )
+                  ) *
+                    item.quantity
                 );
               }, 0)}
             </h5>

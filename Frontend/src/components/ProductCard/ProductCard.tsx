@@ -25,7 +25,7 @@ export default function ProductCard({
           loading="lazy"
           src={data.images[0]}
           alt={data.title}
-          className="bg-second-gray w-full h-[139px] md:h-[250px] object-contain"
+          className="bg-second-gray w-full h-[139px] md:h-[250px] object-contain bg-no-repeat"
         />
         {data.discountPercentage > 0 ? (
           <div className="absolute top-3 left-3 bg-second-red px-3 py-1 rounded-[4px]">

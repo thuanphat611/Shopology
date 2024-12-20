@@ -9,7 +9,7 @@ import { apiErrorHandler } from "@/utils/functions";
 export default function useHandler() {
   const dispatch = useAppDispatch();
 
-  async function handlerAddToCart(productId: string) {
+  async function handleAddToCart(productId: string) {
     try {
       await CartService.addItemToCart(productId, 1);
       dispatch(fetchCartCount());
@@ -30,7 +30,7 @@ export default function useHandler() {
   }
 
   return {
-    onAddToCart: handlerAddToCart,
+    onAddToCart: handleAddToCart,
     onAddToWishList: handleAddToWishList,
   };
 }

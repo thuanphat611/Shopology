@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Cart, Delivery, Heart, Return } from "@/assets/svg";
 
 import useHandler from "./controller";
+import { RelatedProducts } from "./containers";
 
 export default function ProductPage() {
   const {
@@ -14,6 +15,9 @@ export default function ProductPage() {
     onDecreaseQuantity,
     onIncreaseQuantity,
     onThumbnailChange,
+    onAddToWishList,
+    onAddToCart,
+    onBuyProduct,
   } = useHandler();
 
   return (
@@ -30,7 +34,7 @@ export default function ProductPage() {
           ]}
         />
       </div>
-      <div className="flex flex-col lg:flex-row gap-[70px] mb-[140px]">
+      <div className="flex flex-col lg:flex-row gap-[70px] mb-[100px]">
         <div className="grow flex flex-col-reverse lg:flex-row gap-[30px]">
           <div className="basis-1/4 shrink-0 flex lg:flex-col overflow-auto gap-[16px]">
             {data && data.images.length > 0
@@ -49,7 +53,7 @@ export default function ProductPage() {
                 ))
               : null}
           </div>
-          <div className="grow bg-second-gray rounded-[4px]">
+          <div className="grow bg-second-gray rounded-[4px] flex items-center justify-center">
             <img src={thumbnail} alt="Thumbnail" className="w-full h-auto" />
           </div>
         </div>
@@ -95,6 +99,7 @@ export default function ProductPage() {
             </div>
             <div className="flex items-center gap-[20px]">
               <Button
+                onClick={() => onBuyProduct()}
                 type="primary"
                 style={{
                   flexGrow: "1",
@@ -106,6 +111,7 @@ export default function ProductPage() {
                 Buy now
               </Button>
               <Button
+                onClick={() => onAddToWishList(data?.id.toString())}
                 type="primary"
                 style={{
                   background: "#FFFFFF",
@@ -119,6 +125,7 @@ export default function ProductPage() {
                 <Heart />
               </Button>
               <Button
+                onClick={() => onAddToCart(data?.id.toString())}
                 type="primary"
                 style={{
                   background: "#FFFFFF",
@@ -164,6 +171,11 @@ export default function ProductPage() {
         </div>
       </div>
 
+      {data && (
+        <div className="mb-[140px]">
+          <RelatedProducts category={data ? data.category : ""} />
+        </div>
+      )}
       {isLoading && (
         <div className="flex flex-col gap-4 fixed top-0 bottom-0 left-0 right-0 justify-center items-center bg-white z-10">
           <Spin size="large" />
