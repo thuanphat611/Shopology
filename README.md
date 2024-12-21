@@ -25,5 +25,10 @@ Shopology is a modern and dynamic e-commerce website designed to provide users w
 - **Backend/**: Contains the source code for the backend service.
 - **Frontend/**: Contains the source code for the frontend application.
 
+## Setup Instructions
+- For backend setup, refer to the [Backend README](./Backend/README.md).
+- For frontend setup, refer to the [Frontend README](./Frontend/README.md).
+
+
 
 
