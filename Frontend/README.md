@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Frontend Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This document provides instructions for setting up and running the frontend application locally.
 
-Currently, two official plugins are available:
+## Prerequisites
+- A `.env` file configured with the following environment variables:
+  ```env
+  VITE_BACKEND=<backend_url> //http://localhost:3000
+  VITE_BASE_URL=<frontend_url> //http://localhost:5173
+  ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/thuanphat611/Shopology.git
+   cd Frontend
+   ```
 
-## Expanding the ESLint configuration
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. Configure the `.env` file:
+   - Copy the `.env.example` file to `.env`.
+   - Update the values to match your local environment configuration.
 
-- Configure the top-level `parserOptions` property like this:
+## Running the Frontend
+1. Start the development server:
+   ```bash
+   yarn dev
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Access the application at the URL provided by the development server (default: `http://localhost:5173`).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Notes
+- Ensure that the backend service is running and accessible at the URL specified in `VITE_BACKEND`.
+- If you encounter issues, double-check your `.env` configuration and verify that the backend is operational.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
