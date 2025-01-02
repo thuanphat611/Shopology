@@ -5,7 +5,7 @@ Shopology is a modern and dynamic e-commerce website designed to provide users w
 ## Deployment
 - **Live website**: [https://shopology.netlify.app](https://shopology.netlify.app)
   
-**Note**: The server might take some time to respond.
+**Note**: The server might take some time to respond due to free hosting limitations.
 
 ## References
 - **Design reference**: [Full E Commerce Website UI UX Design](https://www.figma.com/community/file/1219312065205187851/full-e-commerce-website-ui-ux-design)
